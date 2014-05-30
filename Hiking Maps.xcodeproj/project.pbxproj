@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2044D80C192EE51A00548DB9 /* MPMTopoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044D809192EE51A00548DB9 /* MPMTopoViewController.m */; };
+		2044D80D192EE51A00548DB9 /* Trail.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044D80B192EE51A00548DB9 /* Trail.m */; };
+		2044D810192EE6C200548DB9 /* MPMTrailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044D80F192EE6C200548DB9 /* MPMTrailViewController.m */; };
+		2089C77919351CC200B96E99 /* test.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 2089C77819351CC200B96E99 /* test.geojson */; };
+		20A25478192BEAF5002F8D21 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A25477192BEAF5002F8D21 /* GoogleMaps.framework */; };
+		20A2547A192BEB4B002F8D21 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 20A25479192BEB4B002F8D21 /* GoogleMaps.bundle */; };
+		20A2547C192BEBA9002F8D21 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A2547B192BEBA9002F8D21 /* AVFoundation.framework */; };
+		20A2547E192BEBB7002F8D21 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A2547D192BEBB7002F8D21 /* CoreData.framework */; };
+		20A25480192BEBC6002F8D21 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A2547F192BEBC6002F8D21 /* CoreLocation.framework */; };
+		20A25482192BEBD3002F8D21 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A25481192BEBD3002F8D21 /* CoreText.framework */; };
+		20A25484192BEBDF002F8D21 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A25483192BEBDF002F8D21 /* GLKit.framework */; };
+		20A25486192BEBEB002F8D21 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A25485192BEBEB002F8D21 /* ImageIO.framework */; };
+		20A25488192BEBFF002F8D21 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A25487192BEBFF002F8D21 /* libc++.dylib */; };
+		20A2548A192BEC13002F8D21 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A25489192BEC13002F8D21 /* libicucore.dylib */; };
+		20A2548C192BEC23002F8D21 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A2548B192BEC23002F8D21 /* libz.dylib */; };
+		20A2548E192BEC33002F8D21 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A2548D192BEC33002F8D21 /* OpenGLES.framework */; };
+		20A25490192BEC41002F8D21 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A2548F192BEC41002F8D21 /* QuartzCore.framework */; };
+		20A25492192BEC4E002F8D21 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A25491192BEC4E002F8D21 /* SystemConfiguration.framework */; };
+		20A25495192BEE0C002F8D21 /* MPMHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A25494192BEE0C002F8D21 /* MPMHomeViewController.m */; };
+		20A2549B192BF3D6002F8D21 /* ashley_trails.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 20A25496192BF3D6002F8D21 /* ashley_trails.geojson */; };
+		20A2549C192BF3D6002F8D21 /* dixie_trails.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 20A25497192BF3D6002F8D21 /* dixie_trails.geojson */; };
+		20A2549D192BF3D6002F8D21 /* fishlake_trails.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 20A25498192BF3D6002F8D21 /* fishlake_trails.geojson */; };
+		20A2549E192BF3D6002F8D21 /* manti_trails.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 20A25499192BF3D6002F8D21 /* manti_trails.geojson */; };
+		20A2549F192BF3D6002F8D21 /* uwf_trails.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 20A2549A192BF3D6002F8D21 /* uwf_trails.geojson */; };
+		20D86A4D192AEFC200520E7D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D86A4C192AEFC200520E7D /* Foundation.framework */; };
+		20D86A4F192AEFC200520E7D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D86A4E192AEFC200520E7D /* CoreGraphics.framework */; };
+		20D86A51192AEFC200520E7D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D86A50192AEFC200520E7D /* UIKit.framework */; };
+		20D86A57192AEFC200520E7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20D86A55192AEFC200520E7D /* InfoPlist.strings */; };
+		20D86A59192AEFC200520E7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D86A58192AEFC200520E7D /* main.m */; };
+		20D86A5D192AEFC200520E7D /* MPMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D86A5C192AEFC200520E7D /* MPMAppDelegate.m */; };
+		20D86A5F192AEFC200520E7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D86A5E192AEFC200520E7D /* Images.xcassets */; };
+		20D86A66192AEFC300520E7D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D86A65192AEFC300520E7D /* XCTest.framework */; };
+		20D86A67192AEFC300520E7D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D86A4C192AEFC200520E7D /* Foundation.framework */; };
+		20D86A68192AEFC300520E7D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D86A50192AEFC200520E7D /* UIKit.framework */; };
+		20D86A70192AEFC300520E7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20D86A6E192AEFC300520E7D /* InfoPlist.strings */; };
+		20D86A72192AEFC300520E7D /* Hiking_MapsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D86A71192AEFC300520E7D /* Hiking_MapsTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		20D86A69192AEFC300520E7D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20D86A41192AEFC200520E7D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 20D86A48192AEFC200520E7D;
+			remoteInfo = "Hiking Maps";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2044D808192EE51A00548DB9 /* MPMTopoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMTopoViewController.h; sourceTree = "<group>"; };
+		2044D809192EE51A00548DB9 /* MPMTopoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMTopoViewController.m; sourceTree = "<group>"; };
+		2044D80A192EE51A00548DB9 /* Trail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trail.h; sourceTree = "<group>"; };
+		2044D80B192EE51A00548DB9 /* Trail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trail.m; sourceTree = "<group>"; };
+		2044D80E192EE6C200548DB9 /* MPMTrailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMTrailViewController.h; sourceTree = "<group>"; };
+		2044D80F192EE6C200548DB9 /* MPMTrailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMTrailViewController.m; sourceTree = "<group>"; };
+		2089C77819351CC200B96E99 /* test.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.geojson; sourceTree = "<group>"; };
+		20A25477192BEAF5002F8D21 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		20A25479192BEB4B002F8D21 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		20A2547B192BEBA9002F8D21 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		20A2547D192BEBB7002F8D21 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		20A2547F192BEBC6002F8D21 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		20A25481192BEBD3002F8D21 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		20A25483192BEBDF002F8D21 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		20A25485192BEBEB002F8D21 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		20A25487192BEBFF002F8D21 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		20A25489192BEC13002F8D21 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		20A2548B192BEC23002F8D21 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		20A2548D192BEC33002F8D21 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		20A2548F192BEC41002F8D21 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		20A25491192BEC4E002F8D21 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		20A25493192BEE0C002F8D21 /* MPMHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMHomeViewController.h; sourceTree = "<group>"; };
+		20A25494192BEE0C002F8D21 /* MPMHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMHomeViewController.m; sourceTree = "<group>"; };
+		20A25496192BF3D6002F8D21 /* ashley_trails.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ashley_trails.geojson; sourceTree = "<group>"; };
+		20A25497192BF3D6002F8D21 /* dixie_trails.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dixie_trails.geojson; sourceTree = "<group>"; };
+		20A25498192BF3D6002F8D21 /* fishlake_trails.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fishlake_trails.geojson; sourceTree = "<group>"; };
+		20A25499192BF3D6002F8D21 /* manti_trails.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = manti_trails.geojson; sourceTree = "<group>"; };
+		20A2549A192BF3D6002F8D21 /* uwf_trails.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = uwf_trails.geojson; sourceTree = "<group>"; };
+		20D86A49192AEFC200520E7D /* Hiking Maps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hiking Maps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		20D86A4C192AEFC200520E7D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		20D86A4E192AEFC200520E7D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		20D86A50192AEFC200520E7D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		20D86A54192AEFC200520E7D /* Hiking Maps-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Hiking Maps-Info.plist"; sourceTree = "<group>"; };
+		20D86A56192AEFC200520E7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		20D86A58192AEFC200520E7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		20D86A5A192AEFC200520E7D /* Hiking Maps-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hiking Maps-Prefix.pch"; sourceTree = "<group>"; };
+		20D86A5B192AEFC200520E7D /* MPMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPMAppDelegate.h; sourceTree = "<group>"; };
+		20D86A5C192AEFC200520E7D /* MPMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPMAppDelegate.m; sourceTree = "<group>"; };
+		20D86A5E192AEFC200520E7D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		20D86A64192AEFC300520E7D /* Hiking MapsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hiking MapsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		20D86A65192AEFC300520E7D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		20D86A6D192AEFC300520E7D /* Hiking MapsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Hiking MapsTests-Info.plist"; sourceTree = "<group>"; };
+		20D86A6F192AEFC300520E7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		20D86A71192AEFC300520E7D /* Hiking_MapsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hiking_MapsTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		20D86A46192AEFC200520E7D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20A25492192BEC4E002F8D21 /* SystemConfiguration.framework in Frameworks */,
+				20A25490192BEC41002F8D21 /* QuartzCore.framework in Frameworks */,
+				20A2548E192BEC33002F8D21 /* OpenGLES.framework in Frameworks */,
+				20A2548C192BEC23002F8D21 /* libz.dylib in Frameworks */,
+				20A2548A192BEC13002F8D21 /* libicucore.dylib in Frameworks */,
+				20A25488192BEBFF002F8D21 /* libc++.dylib in Frameworks */,
+				20A25486192BEBEB002F8D21 /* ImageIO.framework in Frameworks */,
+				20A25484192BEBDF002F8D21 /* GLKit.framework in Frameworks */,
+				20A25482192BEBD3002F8D21 /* CoreText.framework in Frameworks */,
+				20A25480192BEBC6002F8D21 /* CoreLocation.framework in Frameworks */,
+				20A2547E192BEBB7002F8D21 /* CoreData.framework in Frameworks */,
+				20A2547C192BEBA9002F8D21 /* AVFoundation.framework in Frameworks */,
+				20D86A4F192AEFC200520E7D /* CoreGraphics.framework in Frameworks */,
+				20D86A51192AEFC200520E7D /* UIKit.framework in Frameworks */,
+				20A25478192BEAF5002F8D21 /* GoogleMaps.framework in Frameworks */,
+				20D86A4D192AEFC200520E7D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20D86A61192AEFC300520E7D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20D86A66192AEFC300520E7D /* XCTest.framework in Frameworks */,
+				20D86A68192AEFC300520E7D /* UIKit.framework in Frameworks */,
+				20D86A67192AEFC300520E7D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		20A254A0192BF3F2002F8D21 /* Map Data */ = {
+			isa = PBXGroup;
+			children = (
+				2089C77819351CC200B96E99 /* test.geojson */,
+				20A25496192BF3D6002F8D21 /* ashley_trails.geojson */,
+				20A25497192BF3D6002F8D21 /* dixie_trails.geojson */,
+				20A25498192BF3D6002F8D21 /* fishlake_trails.geojson */,
+				20A25499192BF3D6002F8D21 /* manti_trails.geojson */,
+				20A2549A192BF3D6002F8D21 /* uwf_trails.geojson */,
+			);
+			name = "Map Data";
+			sourceTree = "<group>";
+		};
+		20D86A40192AEFC200520E7D = {
+			isa = PBXGroup;
+			children = (
+				20D86A52192AEFC200520E7D /* Hiking Maps */,
+				20D86A6B192AEFC300520E7D /* Hiking MapsTests */,
+				20D86A4B192AEFC200520E7D /* Frameworks */,
+				20D86A4A192AEFC200520E7D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		20D86A4A192AEFC200520E7D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20D86A49192AEFC200520E7D /* Hiking Maps.app */,
+				20D86A64192AEFC300520E7D /* Hiking MapsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		20D86A4B192AEFC200520E7D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20A25491192BEC4E002F8D21 /* SystemConfiguration.framework */,
+				20A2548F192BEC41002F8D21 /* QuartzCore.framework */,
+				20A2548D192BEC33002F8D21 /* OpenGLES.framework */,
+				20A2548B192BEC23002F8D21 /* libz.dylib */,
+				20A25489192BEC13002F8D21 /* libicucore.dylib */,
+				20A25487192BEBFF002F8D21 /* libc++.dylib */,
+				20A25485192BEBEB002F8D21 /* ImageIO.framework */,
+				20A25483192BEBDF002F8D21 /* GLKit.framework */,
+				20A25481192BEBD3002F8D21 /* CoreText.framework */,
+				20A2547F192BEBC6002F8D21 /* CoreLocation.framework */,
+				20A2547D192BEBB7002F8D21 /* CoreData.framework */,
+				20A2547B192BEBA9002F8D21 /* AVFoundation.framework */,
+				20A25479192BEB4B002F8D21 /* GoogleMaps.bundle */,
+				20A25477192BEAF5002F8D21 /* GoogleMaps.framework */,
+				20D86A4C192AEFC200520E7D /* Foundation.framework */,
+				20D86A4E192AEFC200520E7D /* CoreGraphics.framework */,
+				20D86A50192AEFC200520E7D /* UIKit.framework */,
+				20D86A65192AEFC300520E7D /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		20D86A52192AEFC200520E7D /* Hiking Maps */ = {
+			isa = PBXGroup;
+			children = (
+				20A254A0192BF3F2002F8D21 /* Map Data */,
+				20D86A5B192AEFC200520E7D /* MPMAppDelegate.h */,
+				20D86A5C192AEFC200520E7D /* MPMAppDelegate.m */,
+				20A25493192BEE0C002F8D21 /* MPMHomeViewController.h */,
+				20A25494192BEE0C002F8D21 /* MPMHomeViewController.m */,
+				2044D80E192EE6C200548DB9 /* MPMTrailViewController.h */,
+				2044D80F192EE6C200548DB9 /* MPMTrailViewController.m */,
+				2044D808192EE51A00548DB9 /* MPMTopoViewController.h */,
+				2044D809192EE51A00548DB9 /* MPMTopoViewController.m */,
+				2044D80A192EE51A00548DB9 /* Trail.h */,
+				2044D80B192EE51A00548DB9 /* Trail.m */,
+				20D86A5E192AEFC200520E7D /* Images.xcassets */,
+				20D86A53192AEFC200520E7D /* Supporting Files */,
+			);
+			path = "Hiking Maps";
+			sourceTree = "<group>";
+		};
+		20D86A53192AEFC200520E7D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				20D86A54192AEFC200520E7D /* Hiking Maps-Info.plist */,
+				20D86A55192AEFC200520E7D /* InfoPlist.strings */,
+				20D86A58192AEFC200520E7D /* main.m */,
+				20D86A5A192AEFC200520E7D /* Hiking Maps-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		20D86A6B192AEFC300520E7D /* Hiking MapsTests */ = {
+			isa = PBXGroup;
+			children = (
+				20D86A71192AEFC300520E7D /* Hiking_MapsTests.m */,
+				20D86A6C192AEFC300520E7D /* Supporting Files */,
+			);
+			path = "Hiking MapsTests";
+			sourceTree = "<group>";
+		};
+		20D86A6C192AEFC300520E7D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				20D86A6D192AEFC300520E7D /* Hiking MapsTests-Info.plist */,
+				20D86A6E192AEFC300520E7D /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		20D86A48192AEFC200520E7D /* Hiking Maps */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20D86A75192AEFC300520E7D /* Build configuration list for PBXNativeTarget "Hiking Maps" */;
+			buildPhases = (
+				20D86A45192AEFC200520E7D /* Sources */,
+				20D86A46192AEFC200520E7D /* Frameworks */,
+				20D86A47192AEFC200520E7D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Hiking Maps";
+			productName = "Hiking Maps";
+			productReference = 20D86A49192AEFC200520E7D /* Hiking Maps.app */;
+			productType = "com.apple.product-type.application";
+		};
+		20D86A63192AEFC300520E7D /* Hiking MapsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20D86A78192AEFC300520E7D /* Build configuration list for PBXNativeTarget "Hiking MapsTests" */;
+			buildPhases = (
+				20D86A60192AEFC300520E7D /* Sources */,
+				20D86A61192AEFC300520E7D /* Frameworks */,
+				20D86A62192AEFC300520E7D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				20D86A6A192AEFC300520E7D /* PBXTargetDependency */,
+			);
+			name = "Hiking MapsTests";
+			productName = "Hiking MapsTests";
+			productReference = 20D86A64192AEFC300520E7D /* Hiking MapsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		20D86A41192AEFC200520E7D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MPM;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Westminster College";
+				TargetAttributes = {
+					20D86A48192AEFC200520E7D = {
+						DevelopmentTeam = RQK45HF983;
+					};
+					20D86A63192AEFC300520E7D = {
+						TestTargetID = 20D86A48192AEFC200520E7D;
+					};
+				};
+			};
+			buildConfigurationList = 20D86A44192AEFC200520E7D /* Build configuration list for PBXProject "Hiking Maps" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 20D86A40192AEFC200520E7D;
+			productRefGroup = 20D86A4A192AEFC200520E7D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				20D86A48192AEFC200520E7D /* Hiking Maps */,
+				20D86A63192AEFC300520E7D /* Hiking MapsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		20D86A47192AEFC200520E7D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20A2549B192BF3D6002F8D21 /* ashley_trails.geojson in Resources */,
+				2089C77919351CC200B96E99 /* test.geojson in Resources */,
+				20A2547A192BEB4B002F8D21 /* GoogleMaps.bundle in Resources */,
+				20D86A57192AEFC200520E7D /* InfoPlist.strings in Resources */,
+				20D86A5F192AEFC200520E7D /* Images.xcassets in Resources */,
+				20A2549C192BF3D6002F8D21 /* dixie_trails.geojson in Resources */,
+				20A2549F192BF3D6002F8D21 /* uwf_trails.geojson in Resources */,
+				20A2549D192BF3D6002F8D21 /* fishlake_trails.geojson in Resources */,
+				20A2549E192BF3D6002F8D21 /* manti_trails.geojson in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20D86A62192AEFC300520E7D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20D86A70192AEFC300520E7D /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		20D86A45192AEFC200520E7D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20D86A59192AEFC200520E7D /* main.m in Sources */,
+				2044D810192EE6C200548DB9 /* MPMTrailViewController.m in Sources */,
+				2044D80D192EE51A00548DB9 /* Trail.m in Sources */,
+				2044D80C192EE51A00548DB9 /* MPMTopoViewController.m in Sources */,
+				20A25495192BEE0C002F8D21 /* MPMHomeViewController.m in Sources */,
+				20D86A5D192AEFC200520E7D /* MPMAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20D86A60192AEFC300520E7D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20D86A72192AEFC300520E7D /* Hiking_MapsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		20D86A6A192AEFC300520E7D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 20D86A48192AEFC200520E7D /* Hiking Maps */;
+			targetProxy = 20D86A69192AEFC300520E7D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		20D86A55192AEFC200520E7D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20D86A56192AEFC200520E7D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		20D86A6E192AEFC300520E7D /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				20D86A6F192AEFC300520E7D /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		20D86A73192AEFC300520E7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		20D86A74192AEFC300520E7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		20D86A76192AEFC300520E7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hiking Maps/Hiking Maps-Prefix.pch";
+				INFOPLIST_FILE = "Hiking Maps/Hiking Maps-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		20D86A77192AEFC300520E7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hiking Maps/Hiking Maps-Prefix.pch";
+				INFOPLIST_FILE = "Hiking Maps/Hiking Maps-Info.plist";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		20D86A79192AEFC300520E7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Hiking Maps.app/Hiking Maps";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hiking Maps/Hiking Maps-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Hiking MapsTests/Hiking MapsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		20D86A7A192AEFC300520E7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Hiking Maps.app/Hiking Maps";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Hiking Maps/Hiking Maps-Prefix.pch";
+				INFOPLIST_FILE = "Hiking MapsTests/Hiking MapsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		20D86A44192AEFC200520E7D /* Build configuration list for PBXProject "Hiking Maps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20D86A73192AEFC300520E7D /* Debug */,
+				20D86A74192AEFC300520E7D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20D86A75192AEFC300520E7D /* Build configuration list for PBXNativeTarget "Hiking Maps" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20D86A76192AEFC300520E7D /* Debug */,
+				20D86A77192AEFC300520E7D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20D86A78192AEFC300520E7D /* Build configuration list for PBXNativeTarget "Hiking MapsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20D86A79192AEFC300520E7D /* Debug */,
+				20D86A7A192AEFC300520E7D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 20D86A41192AEFC200520E7D /* Project object */;
+}
