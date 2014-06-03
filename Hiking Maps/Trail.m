@@ -24,7 +24,7 @@
     if (properties[@"NAME"] != [NSNull null])
     {
         _name = [properties[@"NAME"] capitalizedString];
-        _length = properties[@"Shape_Leng"];
+        _length = properties[@"Length"];
     }
     
     if (geometry != (NSDictionary *)[NSNull null])

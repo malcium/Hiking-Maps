@@ -9,6 +9,7 @@
 #import "MPMTrailViewController.h"
 #import "Trail.h"
 #import "MPMTopoViewController.h"
+#import "MPMNearestViewController.h"
 
 @interface MPMTrailViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate>
 
@@ -126,16 +127,34 @@
     {
         indexPath = [self.searchController.searchResultsTableView indexPathForSelectedRow];
         Trail *t = self.searchResults[indexPath.row];
-        MPMTopoViewController *viewController = [[MPMTopoViewController alloc] init];
-        viewController.trail = t;
-        [self.navigationController pushViewController:viewController animated:YES];
+        if ([t.name isEqualToString:@"Nearest Trails..."]){
+            [self goToNearestTrails];
+        }
+        else{
+            MPMTopoViewController *viewController = [[MPMTopoViewController alloc] init];
+            viewController.trail = t;
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
     }
     else
     {
         Trail *t = self.trails[indexPath.row];
-        MPMTopoViewController *viewController = [[MPMTopoViewController alloc] init];
-        viewController.trail = t;
-        [self.navigationController pushViewController:viewController animated:YES];
+        if ([t.name isEqualToString:@"Nearest Trails..."]){
+            [self goToNearestTrails];
+        }
+        else{
+            MPMTopoViewController *viewController = [[MPMTopoViewController alloc] init];
+            viewController.trail = t;
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
     }
+}
+
+- (void) goToNearestTrails
+{
+    MPMNearestViewController *viewController = [[MPMNearestViewController alloc] init];
+    viewController.trails = self.trails;
+    viewController.forest = self.forest;
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 @end

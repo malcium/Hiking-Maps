@@ -2,7 +2,7 @@
 //  MPMTopoViewController.m
 //  HikingMaps
 //
-//  Created by Morgan McCoy on 3/10/14.
+//  Created by Morgan McCoy on 2/28/14.
 //  Copyright (c) 2014 Westminster College. All rights reserved.
 //
 
@@ -14,9 +14,7 @@
 
 @end
 
-@implementation MPMTopoViewController{
-    BOOL firstLocationUpdate_;
-}
+@implementation MPMTopoViewController
 
 - (void)viewDidLoad
 {
@@ -28,13 +26,11 @@
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:lat
                                                             longitude:lon
                                                                  zoom:10];
+    // Create the GMSMapView with the trail map camera position.
     self.mapView = [GMSMapView mapWithFrame:self.view.bounds camera:camera];
-    
     self.mapView.settings.myLocationButton = YES;
     self.mapView.mapType = kGMSTypeTerrain;
     self.mapView.myLocationEnabled = YES;
-    
-    // Create the GMSMapView with the trail map camera position.
     
     [self.view addSubview:self.mapView];
     
@@ -59,41 +55,13 @@
     
     GMSPolyline *trailPath = [GMSPolyline polylineWithPath:path];
     trailPath.map = self.mapView;
-    self.mapView.delegate = self;
-    
-    // add observer to listen for location services updates
-    [self.mapView addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:NULL];
-    
-    // enable my location services after view has been added to the UI
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.mapView.myLocationEnabled = YES;
-    });
+    self.mapView.delegate = self;    
 }
 
 -(void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
     self.mapView.frame = self.view.bounds;  // reset the map frame upon device re-orientation
-}
-
- // remove observer for location services updates
-- (void)dealloc
-{
-    [self.mapView removeObserver:self forKeyPath:@"myLocation" context:NULL];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context {
-    //if (!firstLocationUpdate_) {
-        // If the first location update has not yet been recieved, then jump to that
-        // location.
-       // firstLocationUpdate_ = YES;
-       // CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
-       // self.mapView.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
-                                                       //  zoom:14];
-   // }
 }
 
 // method to handle a long button press on the map to launch the google maps app with directions to the coordinate
