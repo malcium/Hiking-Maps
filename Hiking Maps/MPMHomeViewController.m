@@ -76,16 +76,17 @@
 {
     [super didReceiveMemoryWarning];
 }
+
 -(void)setNavigationBarRightButton
 {
-    
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Credits" style:UIBarButtonItemStyleDone target:self action:@selector(onClickrighttButton:)];
     self.navigationItem.rightBarButtonItem = anotherButton;
-    
 }
+
 - (void)onClickrighttButton:(id)sender
 {
     NSLog(@"onClickrighttButton");
+    //self.mapView.mapType = kGMSTypeSatellite;
 }
 
 -(void)viewWillLayoutSubviews
@@ -265,6 +266,7 @@
         }
     }
 }
+
 - (void)mapView:(GMSMapView *)mapView didTapOverlay:(GMSPolyline *)overlay
 {
     GMSPolyline *polyline = overlay;

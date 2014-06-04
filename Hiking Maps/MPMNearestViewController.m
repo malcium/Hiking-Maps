@@ -36,13 +36,11 @@
     return self;
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.title = self.forest;
-    self.mapView.delegate = self;
-    self.navigationController.toolbarHidden = NO;
+    //self.navigationController.toolbarHidden = NO;
     
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.868
@@ -62,7 +60,12 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         self.mapView.myLocationEnabled = YES;
     });
-    
+    self.mapView.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self setNavigationBarRightButton];
 }
 
 -(void)viewWillLayoutSubviews
@@ -71,8 +74,34 @@
     self.mapView.frame = self.view.bounds;  // reset the map frame upon device re-orientation
 }
 
-- (NSMutableArray *)calculateNearest
+-(void)setNavigationBarRightButton
+{
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Satellite" style:UIBarButtonItemStyleDone target:self action:@selector(onClickrighttButton:)];
+    self.navigationItem.rightBarButtonItem = anotherButton;
+}
 
+- (void)onClickrighttButton:(id)sender
+{
+    if (self.mapView.mapType == kGMSTypeTerrain)
+    {
+        self.mapView.mapType = kGMSTypeSatellite;
+        self.navigationItem.rightBarButtonItem.title = @"Normal";
+    }
+    
+    else if (self.mapView.mapType == kGMSTypeSatellite)
+    {
+        self.mapView.mapType = kGMSTypeNormal;
+        self.navigationItem.rightBarButtonItem.title = @"Terrain";
+    }
+    
+    else if (self.mapView.mapType == kGMSTypeNormal)
+    {
+        self.mapView.mapType = kGMSTypeTerrain;
+        self.navigationItem.rightBarButtonItem.title = @"Satellite";
+    }
+}
+
+- (NSMutableArray *)calculateNearest
 {
     NSMutableArray *trailsCopy = [self.trails mutableCopy]; // a mutable copy of the forest's trail array
     [trailsCopy removeObjectAtIndex:0];                     // remove the first object which is essentially just a label
@@ -130,7 +159,6 @@
 - (void)dealloc
 {
     [self.mapView removeObserver:self forKeyPath:@"myLocation" context:NULL];
-    
 }
 
 - (void)drawTrails
@@ -162,9 +190,28 @@
         }
         
         GMSPolyline *trailPath = [GMSPolyline polylineWithPath:path];
+        trailPath.title = t.name;
+        trailPath.tappable = YES;
         trailPath.map = self.mapView;
     }
 }
+
+// method to handle taps on a trail's polyline
+- (void)mapView:(GMSMapView *)mapView didTapOverlay:(GMSPolyline *)overlay
+{
+    NSLog(@"Tapped");
+    GMSPolyline *polyline = overlay;
+    NSString *name = polyline.title;
+    GMSPath *path = polyline.path;
+    float miles = [path lengthOfKind:kGMSLengthRhumb] * METRIC_CONVERSION;
+    CLLocationCoordinate2D coord = [path coordinateAtIndex:0];
+    GMSMarker *marker = [GMSMarker markerWithPosition:coord];
+    marker.title = name;
+    marker.snippet = [NSString stringWithFormat:@"Length: %.2f Miles", miles];
+    marker.map = self.mapView;
+    polyline.strokeColor = [UIColor orangeColor];
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     self.navigationController.toolbarHidden = YES;

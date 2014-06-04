@@ -55,13 +55,44 @@
     
     GMSPolyline *trailPath = [GMSPolyline polylineWithPath:path];
     trailPath.map = self.mapView;
-    self.mapView.delegate = self;    
+    self.mapView.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [self setNavigationBarRightButton];
 }
 
 -(void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
     self.mapView.frame = self.view.bounds;  // reset the map frame upon device re-orientation
+}
+
+-(void)setNavigationBarRightButton
+{
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Satellite" style:UIBarButtonItemStyleDone target:self action:@selector(onClickrighttButton:)];
+    self.navigationItem.rightBarButtonItem = anotherButton;
+}
+
+- (void)onClickrighttButton:(id)sender
+{
+    if (self.mapView.mapType == kGMSTypeTerrain)
+    {
+        self.mapView.mapType = kGMSTypeSatellite;
+        self.navigationItem.rightBarButtonItem.title = @"Normal";
+    }
+    
+    else if (self.mapView.mapType == kGMSTypeSatellite)
+    {
+        self.mapView.mapType = kGMSTypeNormal;
+        self.navigationItem.rightBarButtonItem.title = @"Terrain";
+    }
+    
+    else if (self.mapView.mapType == kGMSTypeNormal)
+    {
+        self.mapView.mapType = kGMSTypeTerrain;
+        self.navigationItem.rightBarButtonItem.title = @"Satellite";
+    }
 }
 
 // method to handle a long button press on the map to launch the google maps app with directions to the coordinate

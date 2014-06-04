@@ -45,8 +45,12 @@
 	
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 44)];
-    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+    [self.searchBar setTranslucent:YES];
+    self.searchBar.tintColor = [UIColor colorWithRed:0.937 green:0.871 blue:0.804 alpha:1.0];
+    self.searchBar.backgroundColor = [UIColor colorWithRed:0.937 green:0.871 blue:0.804 alpha:1.0];
     
+    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+   
     [self.view addSubview:self.tableView];
     
     self.tableView.dataSource = self;
