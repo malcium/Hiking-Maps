@@ -14,12 +14,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // API key for Google Maps SDK
     [GMSServices provideAPIKey:@"AIzaSyAA-7GGEGeq1CQ76RbD2PH5wLX1zBop8I0"];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
+    // create the home view controller and set it as the root
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[MPMHomeViewController alloc] init]];
+    
+    // set navigation bar to olive green color
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.729 green:0.722 blue:0.424 alpha:1.0]];
 
     [self.window makeKeyAndVisible];
     return YES;

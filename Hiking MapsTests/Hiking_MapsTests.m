@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "Trail.h"
 
 @interface Hiking_MapsTests : XCTestCase
 
@@ -26,9 +27,29 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testForDuplicateTrails
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    NSMutableArray *trails;
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"arch"
+                                                     ofType:@"geojson"];
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSArray *trailsArray = jsonDictionary[@"features"];
+    
+    trails = [NSMutableArray new];
+    
+    for(NSDictionary *trailProperties in trailsArray)
+    {
+        Trail *t = [[Trail alloc] initWithProperties:trailProperties];
+        if(t.name != nil)
+            [trails addObject:t];
+    }
+    
+    Trail *test = [trails objectAtIndex:0];
+    for (int i = 1; i < [trails count]; i++){
+        Trail *t = [trails objectAtIndex:i];
+        XCTAssertNotEqual(test, t);
+    }
 }
 
 @end

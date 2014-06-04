@@ -19,6 +19,7 @@
     CLLocation *location;
     BOOL firstLocationUpdate;
     UIImage *img;
+    
 }
 
 - (id)init
@@ -41,6 +42,8 @@
     [super viewDidLoad];
     self.title = self.forest;
     self.mapView.delegate = self;
+    self.navigationController.toolbarHidden = NO;
+    
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.868
                                                             longitude:151.2086
@@ -60,7 +63,6 @@
         self.mapView.myLocationEnabled = YES;
     });
     
-    [self drawTrails];
 }
 
 -(void)viewWillLayoutSubviews
@@ -70,6 +72,7 @@
 }
 
 - (NSMutableArray *)calculateNearest
+
 {
     NSMutableArray *trailsCopy = [self.trails mutableCopy]; // a mutable copy of the forest's trail array
     [trailsCopy removeObjectAtIndex:0];                     // remove the first object which is essentially just a label
@@ -81,29 +84,29 @@
         CLLocation *l = [[CLLocation alloc]initWithLatitude:[t.startLatitude doubleValue] longitude:[t.startLongitude doubleValue]];
         [locationsArray addObject:l];  // and add them to a new array
     }
-    
-    CLLocation *nearestLoc = nil;              // variable to store the nearest location
-    CLLocationDistance nearestDis = DBL_MAX;   // variable to store the nearest distance
-    NSInteger index = 0;                       // variable to store an index for the nearest trail
-    
     for (int i = 0; i < NUMBER_OF_TRAILS;i++){  // loop to iterate through and select nearest trails
+        
+        CLLocation *nearestLoc = nil;              // variable to store the nearest location
+        CLLocationDistance nearestDis = DBL_MAX;   // variable to store the nearest distance
+        
+        NSInteger index = 0;                       // variable to store an index for the nearest trail
+        
         
         for (CLLocation *loc in locationsArray) { // for every location in the array, find the nearest to current location
             CLLocationDistance distance = [location distanceFromLocation:loc];
+            
             if (nearestDis > distance) {
                 nearestLoc = loc;           // and save the details of the trail object
                 nearestDis = distance;
                 index = [locationsArray indexOfObject:loc];
             }
         }
-        
         [locationsArray removeObjectAtIndex:index];  // then remove that object from the location array
         
         [nearestTrails addObject:[trailsCopy objectAtIndex:index]];  // and add the trail with the same index to the returned array
         
         [trailsCopy removeObjectAtIndex:index];  // and remove the trail from the array, so the indexes remain the same between the two
     }
-    
     return nearestTrails;
 }
 
@@ -112,20 +115,22 @@
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
-    if (!firstLocationUpdate) {
-        // If the first location update has not yet been recieved, then jump to that
-        // location.
+    
+    // If the first location update has not yet been recieved, then jump to that
+    if(!firstLocationUpdate){
         firstLocationUpdate = YES;
         location = [change objectForKey:NSKeyValueChangeNewKey];
+        [self drawTrails];
         self.mapView.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
                                                              zoom:5.5];
-    }
+    }    
 }
 
 // remove observer for location services updates
 - (void)dealloc
 {
     [self.mapView removeObserver:self forKeyPath:@"myLocation" context:NULL];
+    
 }
 
 - (void)drawTrails
@@ -158,6 +163,40 @@
         
         GMSPolyline *trailPath = [GMSPolyline polylineWithPath:path];
         trailPath.map = self.mapView;
+    }
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    self.navigationController.toolbarHidden = YES;
+}
+
+// method to handle a long button press on the map to launch the google maps app with directions to the coordinate
+// if google maps is not installed on the device, an alert will prompt the user to the app store to download it
+- (void)mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    NSString *latitude = [[NSNumber numberWithDouble:coordinate.latitude] stringValue];
+    NSString *longitude = [[NSNumber numberWithDouble:coordinate.longitude] stringValue];
+    NSString *googleURL = [NSString stringWithFormat:@"comgooglemaps-x-callback://?daddr=%@,%@&x-success=westminster://?resume=true&x-source=Hiking-Maps",latitude,longitude];
+    
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgooglemaps-x-callback://"]])
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:googleURL]];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Google Maps App is required to calculate directions to this coordinate" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"App Store..", nil];
+        alert.delegate = self;
+        [alert show];
+    }
+}
+
+// method to handle the app store button on the alert window. Redirects to Google Maps app in the app store.
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == [alertView firstOtherButtonIndex])
+    {
+        NSString *appStoreLink = @"https://itunes.apple.com/us/app/google-maps/id585027354?mt=8";
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:appStoreLink]];
     }
 }
 
