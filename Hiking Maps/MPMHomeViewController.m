@@ -22,12 +22,31 @@
 
 @property (nonatomic, strong) UIPopoverController *contactPopover;
 
+@property (nonatomic, strong) NSArray *styles;
+
+@property (nonatomic, strong) NSArray *lengths;
+
 @end
 
 @implementation MPMHomeViewController
 {
     UIImage *img;
     BOOL mapExpand;
+}
+
+- (id)init
+{
+    self = [super init];
+    
+    if(!self) return nil;
+    
+    self.styles = @[[GMSStrokeStyle solidColor:[UIColor yellowColor]],[GMSStrokeStyle solidColor:[UIColor blackColor]]];
+    
+    self.lengths = @[@750, @500];
+    
+    mapExpand = YES;
+    
+    return self;
 }
 
 - (void)viewDidLoad
@@ -89,18 +108,19 @@
 {
     UIViewController *popoverContent = [[UIViewController alloc]init];
     
-    UIView *popoverView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 150, 100)];
+    UIView *popoverView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 100)];
     
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 150, 100)];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, 175, 100)];
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
-    label.font = [UIFont fontWithName:@"Helvetica" size:12];
+    label.font = [UIFont fontWithName:@"Helvetica" size:10];
+
     NSAttributedString *string = [[NSAttributedString alloc] initWithString:@"Map base layers provided by Google. Trail data provided by the US Forest Service, National Park Service, and Bureau of Land Management."];
     label.attributedText = string;
     
     [popoverView addSubview:label];
     popoverContent.view = popoverView;
-    popoverContent.preferredContentSize = CGSizeMake(150, 100);
+    popoverContent.preferredContentSize = CGSizeMake(200, 100);
     
     self.contactPopover =[[UIPopoverController alloc] initWithContentViewController:popoverContent];
     [self.contactPopover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionLeft animated:YES];
@@ -153,53 +173,43 @@
     
     if(index == 0)
     {
-        path = [[NSBundle mainBundle] pathForResource:@"arch"
-                                               ofType:@"geojson"];
+        path = @"arch";
     }
-    if(index == 1)
+    else if(index == 1)
     {
-        path = [[NSBundle mainBundle] pathForResource:@"ashley"
-                                               ofType:@"geojson"];
+        path = @"ashley";
     }
-    if(index == 2)
+    else if(index == 2)
     {
-        path = [[NSBundle mainBundle] pathForResource:@"dino"
-                                               ofType:@"geojson"];
+        path = @"dino";
     }
-    if(index == 3)
+    else if(index == 3)
     {
-        path = [[NSBundle mainBundle] pathForResource:@"dixie"
-                                               ofType:@"geojson"];
+        path = @"dixie";
     }
-    if(index == 4)
+    else if(index == 4)
     {
-        path = [[NSBundle mainBundle] pathForResource:@"fishlake"
-                                               ofType:@"geojson"];
+        path = @"fishlake";
     }
-    if(index == 5)
+    else if(index == 5)
     {
-        path = [[NSBundle mainBundle] pathForResource:@"grand"
-                                               ofType:@"geojson"];
+        path = @"grand";
     }
-    if(index == 6)
+    else if(index == 6)
     {
-        path = [[NSBundle mainBundle] pathForResource:@"manti"
-                                               ofType:@"geojson"];
+        path = @"manti";
     }
-    if(index == 7)
+    else if(index == 7)
     {
-        path = [[NSBundle mainBundle] pathForResource:@"moab"
-                                               ofType:@"geojson"];
+        path = @"moab";
     }
-    if(index == 8)
+    else if(index == 8)
     {
-        path = [[NSBundle mainBundle] pathForResource:@"uwf"
-                                               ofType:@"geojson"];
+        path = @"uwf";
     }
-    if(index == 9)
+    else if(index == 9)
     {
-        path = [[NSBundle mainBundle] pathForResource:@"zion"
-                                               ofType:@"geojson"];
+        path = @"zion";
     }
     
     trailsArray = [self trailArray:path];
@@ -216,10 +226,12 @@
 // method to create a sorted array of trails to populate the trail view controller's table view from geojson data.
 - (NSArray *)trailArray:(NSString *)path
 {
+    NSString *forestName = path;
     NSMutableArray *trails;
     NSSortDescriptor *valueDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *descriptors = [NSArray arrayWithObject:valueDescriptor];
     
+    path = [[NSBundle mainBundle] pathForResource:path ofType:@"geojson"];
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     NSArray *trailsArray = jsonDictionary[@"features"];
@@ -229,8 +241,10 @@
     for(NSDictionary *trailProperties in trailsArray)
     {
         Trail *t = [[Trail alloc] initWithProperties:trailProperties];
-        if(t.name != nil)
+        if(t.name != nil){
+            t.jurisdiction = [self jurisdiction:forestName];
             [trails addObject:t];
+        }
     }
     
     NSArray *sortedArray = [trails sortedArrayUsingDescriptors:descriptors];
@@ -250,6 +264,7 @@
         Trail *t = [[Trail alloc] initWithProperties:trailProperties];
         if(t.name != nil)
         {
+            t.jurisdiction = [self jurisdiction:forestName];
             double lat = [t.startLatitude doubleValue];
             double lon = [t.startLongitude doubleValue];
             CLLocation *loca = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
@@ -260,7 +275,7 @@
             marker.flat = NO;
             marker.title = t.name;
             float miles = [t.length floatValue] * METRIC_CONVERSION;
-            marker.snippet = [NSString stringWithFormat:@"Length: %.2f Miles", miles];
+            marker.snippet = [NSString stringWithFormat:@"Length: %.2f Miles\nJurisdiction: %@", miles, t.jurisdiction];
             
             marker.map = self.mapView;
             
@@ -282,6 +297,46 @@
     }
 }
 
+// method used to set the jurisdiction property of a Trail object
+- (NSString *)jurisdiction:(NSString *)forestName
+{
+   
+    NSString *trailJurisdiction;
+    if([forestName isEqualToString:@"arch"]){
+        trailJurisdiction = @"Arches National Park";
+    }
+    else if([forestName isEqualToString:@"ashley"]){
+        trailJurisdiction = @"Ashley National Forest";
+    }
+    else if([forestName isEqualToString:@"dino"]){
+        trailJurisdiction = @"Dinosaur National Monument";
+    }
+    else if([forestName isEqualToString:@"dixie"]){
+        trailJurisdiction = @"Dixie National Forest";
+    }
+    else if([forestName isEqualToString:@"fishlake"]){
+        trailJurisdiction = @"Fishlake National Forest";
+    }
+    else if([forestName isEqualToString:@"grand"]){
+        trailJurisdiction = @"Grand Staircase Escalante National Monument";
+    }
+    else if([forestName isEqualToString:@"manti"]){
+        trailJurisdiction = @"Manti LaSal National Forest";
+    }
+    else if([forestName isEqualToString:@"moab"]){
+        trailJurisdiction = @"Moab BLM";
+    }
+    else if([forestName isEqualToString:@"uwf"]){
+        trailJurisdiction = @"Uinta-Wasatch-Cache National Forest";
+    }
+    else if([forestName isEqualToString:@"zion"]){
+        trailJurisdiction = @"Zion National Park";
+    }
+    
+    return trailJurisdiction;
+}
+
+// method to handle when a user taps on a specific trail segment on the mapView
 - (void)mapView:(GMSMapView *)mapView didTapOverlay:(GMSPolyline *)overlay
 {
     GMSPolyline *polyline = overlay;
@@ -293,7 +348,8 @@
     marker.title = name;
     marker.snippet = [NSString stringWithFormat:@"Length: %.2f Miles", miles];
     marker.map = self.mapView;
-    polyline.strokeColor = [UIColor orangeColor];
+    polyline.spans = GMSStyleSpans(polyline.path, self.styles, self.lengths, kGMSLengthRhumb);
+    //polyline.strokeColor = [UIColor orangeColor];
 }
 
 // method to handle resizing mapview when a user taps on it
@@ -307,7 +363,7 @@
         [UIView commitAnimations];
         mapExpand = NO;
     }
-    else
+    else if (mapExpand == NO)
     {
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:.5];

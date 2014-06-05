@@ -24,7 +24,9 @@
     if (properties[@"NAME"] != [NSNull null])
     {
         _name = [properties[@"NAME"] capitalizedString];
+        _jurisdiction = nil;
         _length = properties[@"Length"];
+    
     }
     
     if (geometry != (NSDictionary *)[NSNull null])

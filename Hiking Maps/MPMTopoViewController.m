@@ -42,7 +42,7 @@
     GMSMarker *marker = [GMSMarker markerWithPosition:coordi];
     marker.title = self.trail.name;
     float miles = [self.trail.length floatValue] * METRIC_CONVERSION;
-    marker.snippet = [NSString stringWithFormat:@"Length: %.2f Miles", miles];
+    marker.snippet = [NSString stringWithFormat:@"Length: %.2f Miles\nJurisdiction: %@", miles, self.trail.jurisdiction];
     
     marker.map = self.mapView;
     GMSMutablePath *path = [GMSMutablePath path];

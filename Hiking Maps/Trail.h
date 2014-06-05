@@ -11,6 +11,7 @@
 @interface Trail : NSObject
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *jurisdiction;
 @property (nonatomic, strong) NSNumber *startLatitude;
 @property (nonatomic, strong) NSNumber *startLongitude;
 @property (nonatomic, strong) NSArray *coordinates;
