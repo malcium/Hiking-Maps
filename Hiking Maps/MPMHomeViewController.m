@@ -9,16 +9,18 @@
 #import "MPMHomeViewController.h"
 #import "MPMTrailViewController.h"
 #import "Trail.h"
+#import "UIPopoverController+iPhone.h"
 #define METRIC_CONVERSION 0.00062137
 
-
-@interface MPMHomeViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface MPMHomeViewController () <UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *forestsArray;
 
 @property (nonatomic, strong) NSArray *forestTrailsArray;
+
+@property (nonatomic, strong) UIPopoverController *contactPopover;
 
 @end
 
@@ -85,8 +87,16 @@
 
 - (void)onClickrighttButton:(id)sender
 {
-    NSLog(@"onClickrighttButton");
-    //self.mapView.mapType = kGMSTypeSatellite;
+    UIViewController *popoverContent = [[UIViewController alloc]init];
+    
+    UIView *popoverView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 300)];
+    
+    popoverContent.view = popoverView;
+    popoverContent.preferredContentSize = CGSizeMake(200, 300);
+    
+    self.contactPopover =[[UIPopoverController alloc] initWithContentViewController:popoverContent];
+    [self.contactPopover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionLeft animated:YES];
+    [self.contactPopover setDelegate:self];
 }
 
 -(void)viewWillLayoutSubviews

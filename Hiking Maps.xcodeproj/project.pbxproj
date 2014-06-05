@@ -18,6 +18,7 @@
 		2044D80C192EE51A00548DB9 /* MPMTopoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044D809192EE51A00548DB9 /* MPMTopoViewController.m */; };
 		2044D80D192EE51A00548DB9 /* Trail.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044D80B192EE51A00548DB9 /* Trail.m */; };
 		2044D810192EE6C200548DB9 /* MPMTrailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044D80F192EE6C200548DB9 /* MPMTrailViewController.m */; };
+		2078BA25193FF64200B3B402 /* UIPopoverController+iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2078BA24193FF64200B3B402 /* UIPopoverController+iPhone.m */; };
 		20A25478192BEAF5002F8D21 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A25477192BEAF5002F8D21 /* GoogleMaps.framework */; };
 		20A2547A192BEB4B002F8D21 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 20A25479192BEB4B002F8D21 /* GoogleMaps.bundle */; };
 		20A2547C192BEBA9002F8D21 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A2547B192BEBA9002F8D21 /* AVFoundation.framework */; };
@@ -83,6 +84,8 @@
 		2044D80B192EE51A00548DB9 /* Trail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trail.m; sourceTree = "<group>"; };
 		2044D80E192EE6C200548DB9 /* MPMTrailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMTrailViewController.h; sourceTree = "<group>"; };
 		2044D80F192EE6C200548DB9 /* MPMTrailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMTrailViewController.m; sourceTree = "<group>"; };
+		2078BA23193FF64200B3B402 /* UIPopoverController+iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPopoverController+iPhone.h"; sourceTree = "<group>"; };
+		2078BA24193FF64200B3B402 /* UIPopoverController+iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPopoverController+iPhone.m"; sourceTree = "<group>"; };
 		20A25477192BEAF5002F8D21 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		20A25479192BEB4B002F8D21 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		20A2547B192BEBA9002F8D21 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -246,6 +249,8 @@
 				2044D809192EE51A00548DB9 /* MPMTopoViewController.m */,
 				201B31F2193CFF9D0066DE3E /* MPMNearestViewController.h */,
 				201B31F3193CFF9D0066DE3E /* MPMNearestViewController.m */,
+				2078BA23193FF64200B3B402 /* UIPopoverController+iPhone.h */,
+				2078BA24193FF64200B3B402 /* UIPopoverController+iPhone.m */,
 				2044D80A192EE51A00548DB9 /* Trail.h */,
 				2044D80B192EE51A00548DB9 /* Trail.m */,
 				20D86A5E192AEFC200520E7D /* Images.xcassets */,
@@ -402,6 +407,7 @@
 			files = (
 				201B31F4193CFF9D0066DE3E /* MPMNearestViewController.m in Sources */,
 				20D86A59192AEFC200520E7D /* main.m in Sources */,
+				2078BA25193FF64200B3B402 /* UIPopoverController+iPhone.m in Sources */,
 				2044D810192EE6C200548DB9 /* MPMTrailViewController.m in Sources */,
 				2044D80D192EE51A00548DB9 /* Trail.m in Sources */,
 				2044D80C192EE51A00548DB9 /* MPMTopoViewController.m in Sources */,
