@@ -48,7 +48,7 @@
     Trail *test = [trails objectAtIndex:0];
     for (int i = 1; i < [trails count]; i++){
         Trail *t = [trails objectAtIndex:i];
-        XCTAssertNotEqual(test, t);
+        XCTAssertNotEqual(test.name, t.name);
     }
 }
 

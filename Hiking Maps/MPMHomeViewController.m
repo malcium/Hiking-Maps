@@ -89,8 +89,16 @@
 {
     UIViewController *popoverContent = [[UIViewController alloc]init];
     
-    UIView *popoverView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 300)];
+    UIView *popoverView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 200)];
     
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 200)];
+    label.numberOfLines = 0;
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    label.font = [UIFont fontWithName:@"Helvetica" size:12];
+    NSAttributedString *string = [[NSAttributedString alloc] initWithString:@"Map base layer provided by Google. Trail data provided by the US Forest Service, National Park Service, and Bureau of Land Management."];
+    label.attributedText = string;
+    
+    [popoverView addSubview:label];
     popoverContent.view = popoverView;
     popoverContent.preferredContentSize = CGSizeMake(200, 300);
     
@@ -104,11 +112,8 @@
     [super viewWillLayoutSubviews];
     
     mapExpand = YES;
-    //self.tableView.frame = self.view.bounds;
     self.tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height/2);
     self.tableView.contentInset = UIEdgeInsetsMake([self.topLayoutGuide length], 0, 0, 0);
-    
-    //self.mapView.frame = self.view.bounds;
     self.mapView.frame = CGRectMake(0,self.view.bounds.size.height/2,self.view.bounds.size.width,self.view.bounds.size.height/2);
 }
 
