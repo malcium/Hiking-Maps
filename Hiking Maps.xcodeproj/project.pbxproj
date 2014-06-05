@@ -19,6 +19,7 @@
 		2044D80D192EE51A00548DB9 /* Trail.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044D80B192EE51A00548DB9 /* Trail.m */; };
 		2044D810192EE6C200548DB9 /* MPMTrailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044D80F192EE6C200548DB9 /* MPMTrailViewController.m */; };
 		2078BA25193FF64200B3B402 /* UIPopoverController+iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2078BA24193FF64200B3B402 /* UIPopoverController+iPhone.m */; };
+		2078BA271940C88E00B3B402 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2078BA261940C88E00B3B402 /* README.md */; };
 		20A25478192BEAF5002F8D21 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A25477192BEAF5002F8D21 /* GoogleMaps.framework */; };
 		20A2547A192BEB4B002F8D21 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 20A25479192BEB4B002F8D21 /* GoogleMaps.bundle */; };
 		20A2547C192BEBA9002F8D21 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A2547B192BEBA9002F8D21 /* AVFoundation.framework */; };
@@ -86,6 +87,7 @@
 		2044D80F192EE6C200548DB9 /* MPMTrailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMTrailViewController.m; sourceTree = "<group>"; };
 		2078BA23193FF64200B3B402 /* UIPopoverController+iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPopoverController+iPhone.h"; sourceTree = "<group>"; };
 		2078BA24193FF64200B3B402 /* UIPopoverController+iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPopoverController+iPhone.m"; sourceTree = "<group>"; };
+		2078BA261940C88E00B3B402 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		20A25477192BEAF5002F8D21 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		20A25479192BEB4B002F8D21 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		20A2547B192BEBA9002F8D21 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -253,6 +255,7 @@
 				2078BA24193FF64200B3B402 /* UIPopoverController+iPhone.m */,
 				2044D80A192EE51A00548DB9 /* Trail.h */,
 				2044D80B192EE51A00548DB9 /* Trail.m */,
+				2078BA261940C88E00B3B402 /* README.md */,
 				20D86A5E192AEFC200520E7D /* Images.xcassets */,
 				20D86A53192AEFC200520E7D /* Supporting Files */,
 			);
@@ -370,6 +373,7 @@
 				20A2549B192BF3D6002F8D21 /* ashley_trails.geojson in Resources */,
 				20A2547A192BEB4B002F8D21 /* GoogleMaps.bundle in Resources */,
 				20D86A57192AEFC200520E7D /* InfoPlist.strings in Resources */,
+				2078BA271940C88E00B3B402 /* README.md in Resources */,
 				20D86A5F192AEFC200520E7D /* Images.xcassets in Resources */,
 				201B31EE193CE1890066DE3E /* dixie.geojson in Resources */,
 				201B31F0193CE1890066DE3E /* manti.geojson in Resources */,

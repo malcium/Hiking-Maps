@@ -89,18 +89,18 @@
 {
     UIViewController *popoverContent = [[UIViewController alloc]init];
     
-    UIView *popoverView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 200, 200)];
+    UIView *popoverView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 150, 100)];
     
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 200, 200)];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 150, 100)];
     label.numberOfLines = 0;
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.font = [UIFont fontWithName:@"Helvetica" size:12];
-    NSAttributedString *string = [[NSAttributedString alloc] initWithString:@"Map base layer provided by Google. Trail data provided by the US Forest Service, National Park Service, and Bureau of Land Management."];
+    NSAttributedString *string = [[NSAttributedString alloc] initWithString:@"Map base layers provided by Google. Trail data provided by the US Forest Service, National Park Service, and Bureau of Land Management."];
     label.attributedText = string;
     
     [popoverView addSubview:label];
     popoverContent.view = popoverView;
-    popoverContent.preferredContentSize = CGSizeMake(200, 300);
+    popoverContent.preferredContentSize = CGSizeMake(150, 100);
     
     self.contactPopover =[[UIPopoverController alloc] initWithContentViewController:popoverContent];
     [self.contactPopover presentPopoverFromBarButtonItem:self.navigationItem.rightBarButtonItem permittedArrowDirections:UIPopoverArrowDirectionUp | UIPopoverArrowDirectionLeft animated:YES];
