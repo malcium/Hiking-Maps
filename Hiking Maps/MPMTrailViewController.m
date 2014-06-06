@@ -192,12 +192,14 @@
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
+// method to set the trail objects into self.sections 2D array, organized alphabetically
+// for use with the section index portion of the tableview, to jump to certain alphabetic section
 - (void)setObjects:(NSArray *)objects {
     SEL selector = @selector(name);
     NSInteger sectionTitlesCount = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
     
     NSMutableArray *mutableSections = [[NSMutableArray alloc] initWithCapacity:sectionTitlesCount];
-    for (NSUInteger idx = 0; idx < sectionTitlesCount; idx++)
+    for (NSUInteger i = 0; i < sectionTitlesCount; i++)
     {
         [mutableSections addObject:[NSMutableArray array]];
     }
@@ -208,17 +210,26 @@
         [[mutableSections objectAtIndex:sectionNumber] addObject:object];
     }
     
-    for (NSUInteger idx = 0; idx < sectionTitlesCount; idx++)
+    for (NSUInteger i = 0; i < sectionTitlesCount; i++)
     {
-        NSArray *objectsForSection = [mutableSections objectAtIndex:idx];
-        [mutableSections replaceObjectAtIndex:idx withObject:[[UILocalizedIndexedCollation currentCollation] sortedArrayFromArray:objectsForSection collationStringSelector:selector]];
+        NSArray *objectsForSection = [mutableSections objectAtIndex:i];
+        [mutableSections replaceObjectAtIndex:i withObject:[[UILocalizedIndexedCollation currentCollation] sortedArrayFromArray:objectsForSection collationStringSelector:selector]];
     }
+    // create a dummy trail that only has a name to fill the first tableview cell, add it to the first index
+    // of the first array (the 'A' section).
+    Trail *nearest = [[Trail alloc] init];
+    nearest.name = @"Nearest Trails...";
+    mutableSections[0] = [@[nearest] arrayByAddingObjectsFromArray:mutableSections[0]];
     
+    // set the sections property used to populate the tableview
     self.sections = mutableSections;
     
+    // and reload the tableview property
     [self.tableView reloadData];
 }
 
+// method to provide a title for the section headers in the tableview property
+// if the searchDisplayController is active, returns nil to erase the header titles temporarily
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if ([self.searchDisplayController isActive])
@@ -226,11 +237,14 @@
     return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
 }
 
+// returns an array of strings to set the titles of the section headers
+// returns the alphabet based on the localization settings of the device
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
     return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
 }
 
+// returns the section index used to jump to a particular section when it's tapped in the section indexes (A --> Z)
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
     return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];

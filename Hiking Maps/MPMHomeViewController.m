@@ -247,11 +247,6 @@
     // give the file name to the trailArray method to create the objects and return an array of trails
     trailsArray = [self trailArray:path];
     
-    // create a dummy trail that only has a title to fill the first tableview cell, add it to the first index
-    Trail *nearest = [[Trail alloc] init];
-    nearest.name = @"Nearest Trails...";
-    trailsArray = [@[nearest] arrayByAddingObjectsFromArray:trailsArray];
-    
     // initialize the trail view controller and set it's trails and forest property,
     // then push to that controller
     MPMTrailViewController *viewController = [[MPMTrailViewController alloc] init];
