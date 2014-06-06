@@ -21,6 +21,8 @@
 
 @property (nonatomic, strong) NSArray *searchResults;
 
+@property (nonatomic, strong) NSArray *sections;
+
 @end
 
 @implementation MPMTrailViewController
@@ -66,6 +68,7 @@
     [self.tableView setTableHeaderView:self.searchBar];
     
     self.title = self.forest;
+    [self setObjects:self.trails];
 }
 
 // re-sizes upon device reorientation
@@ -107,7 +110,7 @@
     }
     else
     {
-        return [self.trails count];
+        return [self.sections[section] count];
     }
 }
 
@@ -128,10 +131,18 @@
     }
     else
     {
-        cell.textLabel.text = [self.trails[indexPath.row] name];
+        cell.textLabel.text = [self.sections[indexPath.section][indexPath.row] name];
     }
     
     return cell;
+}
+
+// method to define the number of sections in the tableview (UITableViewDataSource)
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    if ([self.searchDisplayController isActive])
+        return 1;
+    return [self.sections count];
 }
 
 // adds styling to the cell so that the accessory view will be shaded by the background color as well
@@ -159,7 +170,7 @@
     }
     else
     {
-        Trail *t = self.trails[indexPath.row];
+        Trail *t = self.sections[indexPath.section][indexPath.row];
         if ([t.name isEqualToString:@"Nearest Trails..."]){
             [self goToNearestTrails];
         }
@@ -180,4 +191,49 @@
     viewController.forest = self.forest;
     [self.navigationController pushViewController:viewController animated:YES];
 }
+
+- (void)setObjects:(NSArray *)objects {
+    SEL selector = @selector(name);
+    NSInteger sectionTitlesCount = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
+    
+    NSMutableArray *mutableSections = [[NSMutableArray alloc] initWithCapacity:sectionTitlesCount];
+    for (NSUInteger idx = 0; idx < sectionTitlesCount; idx++)
+    {
+        [mutableSections addObject:[NSMutableArray array]];
+    }
+    
+    for (id object in objects)
+    {
+        NSInteger sectionNumber = [[UILocalizedIndexedCollation currentCollation] sectionForObject:object collationStringSelector:selector];
+        [[mutableSections objectAtIndex:sectionNumber] addObject:object];
+    }
+    
+    for (NSUInteger idx = 0; idx < sectionTitlesCount; idx++)
+    {
+        NSArray *objectsForSection = [mutableSections objectAtIndex:idx];
+        [mutableSections replaceObjectAtIndex:idx withObject:[[UILocalizedIndexedCollation currentCollation] sortedArrayFromArray:objectsForSection collationStringSelector:selector]];
+    }
+    
+    self.sections = mutableSections;
+    
+    [self.tableView reloadData];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if ([self.searchDisplayController isActive])
+        return nil;
+    return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
+}
+
 @end
