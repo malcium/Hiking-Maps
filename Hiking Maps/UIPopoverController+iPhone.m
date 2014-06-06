@@ -10,6 +10,7 @@
 
 @implementation UIPopoverController (iPhone)
 
+// This category allows a UIPopoverController to be used on an iPhone, and not just iPads
 + (BOOL)_popoversDisabled
 {
     return NO;

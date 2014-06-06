@@ -11,16 +11,17 @@
 
 @implementation Trail
 
+//custom init to create trail objects
 - (id)initWithProperties:(NSDictionary *)dictionary
 {
     self = [super init];
     
     if(!self) return nil;
     
-    //custom init to create trail objects
-    NSDictionary *properties = dictionary[@"properties"];
-    NSDictionary *geometry = dictionary[@"geometry"];
+    NSDictionary *properties = dictionary[@"properties"];  // dictionary for the properties field in the JSON
+    NSDictionary *geometry = dictionary[@"geometry"];      // dictionary for the geometry field in the JSON
     
+    // if the trail has a name that isn't null, set the basic properties
     if (properties[@"NAME"] != [NSNull null])
     {
         _name = [properties[@"NAME"] capitalizedString];
@@ -29,6 +30,9 @@
     
     }
     
+    // if the geometry portion of a trail exists (some trails in the data have none)
+    // then store the coordinates in the coordinates property of a trail, and grab
+    // the first two coordinates and set those properties as well
     if (geometry != (NSDictionary *)[NSNull null])
     {
         if ([geometry[@"type"] isEqual: @"LineString"])
@@ -37,7 +41,6 @@
             NSArray *coordinate = [_coordinates firstObject];
             _startLatitude = coordinate[1];
             _startLongitude = coordinate[0];
-           // NSLog(@"%@, %@", coordinate[0], coordinate[1]);
         }
         if ([geometry[@"type"] isEqual: @"MultiLineString"])
         {
@@ -45,7 +48,6 @@
             NSArray *coordinate = [_coordinates firstObject];
             _startLatitude = coordinate[1];
             _startLongitude = coordinate[0];
-            //NSLog(@"%@, %@", coordinate[0], coordinate[1]);
         }
     }
     

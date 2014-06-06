@@ -42,6 +42,7 @@
 {
     [super viewDidLoad];
     
+    // initialize the table view and search bar and search bar controller and set the delegates and nav bar title
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 44)];
     [self.searchBar setTranslucent:YES];
@@ -67,6 +68,7 @@
     self.title = self.forest;
 }
 
+// re-sizes upon device reorientation
 -(void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
@@ -74,6 +76,8 @@
     self.tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
 }
 
+// Create a predicate to use for the search bar, checks if the name attribute of a trail contains the search text
+// and sets the array to be searched (self.trails)
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     NSPredicate *resultPredicate = [NSPredicate
@@ -83,6 +87,7 @@
     self.searchResults = [self.trails filteredArrayUsingPredicate:resultPredicate];
 }
 
+// reloads the table according to the search string entered
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     [self filterContentForSearchText:searchString
@@ -93,6 +98,7 @@
     return YES;
 }
 
+// Changes the number of rows in the table depending on whether the search results tableview is showing or not
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(tableView == self.searchController.searchResultsTableView)
@@ -105,6 +111,7 @@
     }
 }
 
+// Populates the tableview cells based upon which tableview is active, the search results table view or the main
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TrailIdentifier"];
@@ -127,11 +134,14 @@
     return cell;
 }
 
+// adds styling to the cell so that the accessory view will be shaded by the background color as well
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.contentView.superview.backgroundColor = [UIColor colorWithRed:0.937 green:0.871 blue:0.804 alpha:1.0];
 }
 
+// Action upon selecting row for index path depending upon which tableview is active, the search tableview
+// or the main
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if([self.searchController isActive])
@@ -161,6 +171,8 @@
     }
 }
 
+// If the nearest trails option is selected (top cell in tableview), then go to a different view controller
+// to calculate and display the nearest trails
 - (void) goToNearestTrails
 {
     MPMNearestViewController *viewController = [[MPMNearestViewController alloc] init];

@@ -98,12 +98,21 @@
     [super didReceiveMemoryWarning];
 }
 
+// method to set the navigation bar button on home screen or when map is minimized
 -(void)setNavigationBarRightButton
 {
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Credits" style:UIBarButtonItemStyleDone target:self action:@selector(onClickrighttButton:)];
-    self.navigationItem.rightBarButtonItem = anotherButton;
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Credits" style:UIBarButtonItemStyleDone target:self action:@selector(onClickrighttButton:)];
+    self.navigationItem.rightBarButtonItem = button;
 }
 
+// method to set the navigation bar button on home screen when map is expanded
+-(void)setNavigationBarButtonOnExpand
+{
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Satellite" style:UIBarButtonItemStyleDone target:self action:@selector(onClickrighttMapButton:)];
+    self.navigationItem.rightBarButtonItem = button;
+}
+
+// method to handle right navigation bar button when the map is minimized, launches UIPopover with map data credits.
 - (void)onClickrighttButton:(id)sender
 {
     UIViewController *popoverContent = [[UIViewController alloc]init];
@@ -127,6 +136,29 @@
     [self.contactPopover setDelegate:self];
 }
 
+// method to handle right navigation bar button when map has been expanded, changes map type
+- (void)onClickrighttMapButton:(id)sender
+{
+    if (self.mapView.mapType == kGMSTypeTerrain)
+    {
+        self.mapView.mapType = kGMSTypeSatellite;
+        self.navigationItem.rightBarButtonItem.title = @"Normal";
+    }
+    
+    else if (self.mapView.mapType == kGMSTypeSatellite)
+    {
+        self.mapView.mapType = kGMSTypeNormal;
+        self.navigationItem.rightBarButtonItem.title = @"Terrain";
+    }
+    
+    else if (self.mapView.mapType == kGMSTypeNormal)
+    {
+        self.mapView.mapType = kGMSTypeTerrain;
+        self.navigationItem.rightBarButtonItem.title = @"Satellite";
+    }
+}
+
+// lays out subviews initially, and on device rotation
 -(void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
@@ -290,8 +322,8 @@
             GMSPolyline *trailPath = [GMSPolyline polylineWithPath:path];
             
             trailPath.tappable = YES;
-            trailPath.title = t.name;
-            
+            trailPath.title = [t.name stringByAppendingFormat:@"\n Jurisdiction: %@",t.jurisdiction];
+
             trailPath.map = self.mapView;
         }
     }
@@ -300,8 +332,7 @@
 // method used to set the jurisdiction property of a Trail object
 - (NSString *)jurisdiction:(NSString *)forestName
 {
-   
-    NSString *trailJurisdiction;
+   NSString *trailJurisdiction;
     if([forestName isEqualToString:@"arch"]){
         trailJurisdiction = @"Arches National Park";
     }
@@ -349,7 +380,6 @@
     marker.snippet = [NSString stringWithFormat:@"Length: %.2f Miles", miles];
     marker.map = self.mapView;
     polyline.spans = GMSStyleSpans(polyline.path, self.styles, self.lengths, kGMSLengthRhumb);
-    //polyline.strokeColor = [UIColor orangeColor];
 }
 
 // method to handle resizing mapview when a user taps on it
@@ -360,6 +390,7 @@
         [UIView setAnimationDuration:.5];
         [self.view bringSubviewToFront:self.mapView];
         self.mapView.frame = CGRectMake(0,0,self.view.bounds.size.width,self.view.bounds.size.height);
+        [self setNavigationBarButtonOnExpand];
         [UIView commitAnimations];
         mapExpand = NO;
     }
@@ -368,6 +399,7 @@
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:.5];
         [self viewWillLayoutSubviews];
+        [self setNavigationBarRightButton];
         [UIView commitAnimations];
     }
 }

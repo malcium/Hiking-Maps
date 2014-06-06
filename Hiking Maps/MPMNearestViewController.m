@@ -12,6 +12,10 @@
 
 @interface MPMNearestViewController ()
 
+@property (nonatomic, strong) NSArray *styles;
+
+@property (nonatomic, strong) NSArray *lengths;
+
 @end
 
 @implementation MPMNearestViewController{
@@ -22,6 +26,7 @@
     
 }
 
+// custom init to set the properties and instance variables
 - (id)init
 {
     self = [super init];
@@ -31,7 +36,12 @@
     self.forest = [[NSString alloc] init];
     
     self.trails = [[NSArray alloc] init];
+    
     img = [UIImage imageNamed:@"red-dot.png"];
+    
+    self.styles = @[[GMSStrokeStyle solidColor:[UIColor yellowColor]],[GMSStrokeStyle solidColor:[UIColor blackColor]]];
+    
+    self.lengths = @[@750, @500];
     
     return self;
 }
@@ -63,23 +73,28 @@
     self.mapView.delegate = self;
 }
 
+// set the navigation bar button when view will appear
 - (void)viewWillAppear:(BOOL)animated
 {
     [self setNavigationBarRightButton];
 }
 
+
+// reset the map frame upon device re-orientation
 -(void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    self.mapView.frame = self.view.bounds;  // reset the map frame upon device re-orientation
+    self.mapView.frame = self.view.bounds;
 }
 
+// sets the right navigation button to a particular title and assignes a method to its action
 -(void)setNavigationBarRightButton
 {
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Satellite" style:UIBarButtonItemStyleDone target:self action:@selector(onClickrighttButton:)];
-    self.navigationItem.rightBarButtonItem = anotherButton;
+    UIBarButtonItem *button = [[UIBarButtonItem alloc] initWithTitle:@"Satellite" style:UIBarButtonItemStyleDone target:self action:@selector(onClickrighttButton:)];
+    self.navigationItem.rightBarButtonItem = button;
 }
 
+// handles button presses on the right navigation bar button to change the map type
 - (void)onClickrighttButton:(id)sender
 {
     if (self.mapView.mapType == kGMSTypeTerrain)
@@ -101,6 +116,8 @@
     }
 }
 
+// method to calculate the nearest trails to the user's location, repquires that myLocation is enabled and first KVO
+// update has occured
 - (NSMutableArray *)calculateNearest
 {
     NSMutableArray *trailsCopy = [self.trails mutableCopy]; // a mutable copy of the forest's trail array
@@ -149,6 +166,8 @@
     if(!firstLocationUpdate){
         firstLocationUpdate = YES;
         location = [change objectForKey:NSKeyValueChangeNewKey];
+        
+        // call to method to draw the nearest trails after first KVO update has occurred
         [self drawTrails];
         self.mapView.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
                                                              zoom:5.5];
@@ -161,8 +180,10 @@
     [self.mapView removeObserver:self forKeyPath:@"myLocation" context:NULL];
 }
 
+// method to draw the nearest trails on the map
 - (void)drawTrails
 {
+    // first grab an array of the nearest trails from the calculateNearest method
     NSArray *nearestTrails = [self calculateNearest];
     
     for (Trail *t in nearestTrails) {
@@ -190,7 +211,7 @@
         }
         
         GMSPolyline *trailPath = [GMSPolyline polylineWithPath:path];
-        trailPath.title = t.name;
+        trailPath.title = [t.name stringByAppendingFormat:@"\n Jurisdiction: %@",t.jurisdiction];
         trailPath.tappable = YES;
         trailPath.map = self.mapView;
     }
@@ -209,12 +230,7 @@
     marker.title = name;
     marker.snippet = [NSString stringWithFormat:@"Length: %.2f Miles", miles];
     marker.map = self.mapView;
-    polyline.strokeColor = [UIColor orangeColor];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    self.navigationController.toolbarHidden = YES;
+    polyline.spans = GMSStyleSpans(polyline.path, self.styles, self.lengths, kGMSLengthRhumb);
 }
 
 // method to handle a long button press on the map to launch the google maps app with directions to the coordinate
