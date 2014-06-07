@@ -47,15 +47,16 @@
     // initialize the table view and search bar and search bar controller and set the delegates and nav bar title
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.tableView.frame), 44)];
-    [self.searchBar setTranslucent:YES];
-    self.searchBar.barTintColor = [UIColor colorWithRed:0.937 green:0.871 blue:0.804 alpha:1.0];
+    [self.searchBar setTranslucent:NO];
+    self.searchBar.barTintColor = [UIColor colorWithRed:0.729 green:0.722 blue:0.424 alpha:1.0];
     
-    self.searchBar.backgroundColor = [UIColor colorWithRed:0.937 green:0.871 blue:0.804 alpha:1.0];
+    self.searchBar.backgroundColor = [UIColor colorWithRed:0.729 green:0.722 blue:0.424 alpha:1.0];
     self.searchBar.tintColor = [UIColor colorWithRed:0.729 green:0.722 blue:0.424 alpha:1.0];
     
     self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
-   
+    
     [self.view addSubview:self.tableView];
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"Header"];
     
     self.tableView.dataSource = self;
     
@@ -115,6 +116,7 @@
 }
 
 // Populates the tableview cells based upon which tableview is active, the search results table view or the main
+// table view that is broken into alphabetic sections
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TrailIdentifier"];
@@ -138,6 +140,7 @@
 }
 
 // method to define the number of sections in the tableview (UITableViewDataSource)
+// returns only one section if the search results tableview is active
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     if ([self.searchDisplayController isActive])
@@ -193,7 +196,7 @@
 }
 
 // method to set the trail objects into self.sections 2D array, organized alphabetically
-// for use with the section index portion of the tableview, to jump to certain alphabetic section
+// for use with the section index portion of the tableview, to jump to a specific alphabetic section
 - (void)setObjects:(NSArray *)objects {
     SEL selector = @selector(name);
     NSInteger sectionTitlesCount = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
@@ -230,17 +233,19 @@
 
 // method to provide a title for the section headers in the tableview property
 // if the searchDisplayController is active, returns nil to erase the header titles temporarily
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if ([self.searchDisplayController isActive])
-        return nil;
-    return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    if ([self.searchDisplayController isActive])
+//        return nil;
+//    return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
+//}
 
 // returns an array of strings to set the titles of the section headers
 // returns the alphabet based on the localization settings of the device
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
+    if ([self.searchDisplayController isActive])
+        return nil;
     return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
 }
 
@@ -248,6 +253,44 @@
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
     return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
+}
+
+// method to customize the header cells in the tableview as far as the background color, size, font, etc..
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UITableViewHeaderFooterView *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:@"Header"];
+    
+    UILabel *titleLabel = (UILabel *)[headerView.contentView viewWithTag:1];
+    if (titleLabel == nil) {
+        UIColor *backgroundColor = [UIColor colorWithRed:0.729 green:0.722 blue:0.424 alpha:1.0];
+        headerView.contentView.backgroundColor = backgroundColor;
+        titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 0.0, self.tableView.bounds.size.width, 15.0)];
+        titleLabel.textColor = [UIColor blackColor];
+        //titleLabel.backgroundColor = backgroundColor;
+        titleLabel.tintColor = backgroundColor;
+        titleLabel.shadowOffset = CGSizeMake(0.0, 0.5);
+        titleLabel.tag = 1;
+        titleLabel.font = [UIFont systemFontOfSize:12.0];
+        [headerView.contentView addSubview:titleLabel];
+    }
+    
+    NSString *sectionTitle = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
+    if (sectionTitle == nil) {
+        sectionTitle = @"Missing Title";
+    }
+    
+    titleLabel.text = sectionTitle;
+    
+    return headerView;
+}
+
+// method to se the height of the header cells in the tableview.  Reduces it to zero if the
+// search bar is active, or if there are no trails in that particular alphabetic section.
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if ([self.searchDisplayController isActive] || [self.sections[section] count] == 0)
+        return 0.0;
+    return 15.0;
 }
 
 @end

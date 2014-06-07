@@ -329,7 +329,7 @@
     }
 }
 
-// method used to set the jurisdiction property of a Trail object
+// method used to set the jurisdiction property of a Trail object based on geojson file name
 - (NSString *)jurisdiction:(NSString *)forestName
 {
    NSString *trailJurisdiction;
@@ -382,13 +382,16 @@
     polyline.spans = GMSStyleSpans(polyline.path, self.styles, self.lengths, kGMSLengthRhumb);
 }
 
-// method to handle resizing mapview when a user taps on it
+// method to handle resizing mapview when a user taps on it, also changes the button in the upper
+// right hand side of the navigation bar to change the type of base layer map when it is expanded
+// to full screen
 - (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate
 {
     if(mapExpand == YES)
-    {   [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:.5];
+    {
         [self.view bringSubviewToFront:self.mapView];
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:.5];        
         self.mapView.frame = CGRectMake(0,0,self.view.bounds.size.width,self.view.bounds.size.height);
         [self setNavigationBarButtonOnExpand];
         [UIView commitAnimations];
