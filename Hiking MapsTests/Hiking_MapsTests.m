@@ -11,6 +11,8 @@
 
 @interface Hiking_MapsTests : XCTestCase
 
+@property (nonatomic, strong) NSArray *data;
+
 @end
 
 @implementation Hiking_MapsTests
@@ -18,37 +20,70 @@
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    self.data = @[@"arch",@"dino",@"zion",@"grand",@"moab",@"ashley",@"dixie",@"fishlake",@"manti",@"uwf"];
 }
 
 - (void)tearDown
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    NSLog(@"%s", __PRETTY_FUNCTION__);
     [super tearDown];
 }
 
+// tests every dataset to ensure that Trail object creation doesn't produce trails with duplicate names
 - (void)testForDuplicateTrails
 {
-    NSMutableArray *trails;
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"arch"
-                                                     ofType:@"geojson"];
-    NSData *data = [NSData dataWithContentsOfFile:path];
-    NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    NSArray *trailsArray = jsonDictionary[@"features"];
-    
-    trails = [NSMutableArray new];
-    
-    for(NSDictionary *trailProperties in trailsArray)
-    {
-        Trail *t = [[Trail alloc] initWithProperties:trailProperties];
-        if(t.name != nil)
-            [trails addObject:t];
+    NSLog(@"%s doing work...", __PRETTY_FUNCTION__);
+    for (NSString *s in self.data){
+        NSMutableArray *trails;
+        NSString *path = [[NSBundle mainBundle] pathForResource:s
+                                                         ofType:@"geojson"];
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSArray *trailsArray = jsonDictionary[@"features"];
+        
+        trails = [NSMutableArray new];
+        
+        for(NSDictionary *trailProperties in trailsArray)
+        {
+            Trail *t = [[Trail alloc] initWithProperties:trailProperties];
+            if(t.name != nil)
+                [trails addObject:t];
+        }
+        
+        Trail *test = [trails objectAtIndex:0];
+        for (int i = 1; i < [trails count]; i++){
+            Trail *t = [trails objectAtIndex:i];
+            XCTAssertNotEqual(test.name, t.name);
+        }
     }
-    
-    Trail *test = [trails objectAtIndex:0];
-    for (int i = 1; i < [trails count]; i++){
-        Trail *t = [trails objectAtIndex:i];
-        XCTAssertNotEqual(test.name, t.name);
+}
+
+// Test to ensure that object creation doesn't create null objects
+- (void)testForNils
+{
+    NSLog(@"%s doing work...", __PRETTY_FUNCTION__);
+    for (NSString *s in self.data){
+        NSMutableArray *trails;
+        NSString *path = [[NSBundle mainBundle] pathForResource:s
+                                                         ofType:@"geojson"];
+        NSData *data = [NSData dataWithContentsOfFile:path];
+        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSArray *trailsArray = jsonDictionary[@"features"];
+        
+        trails = [NSMutableArray new];
+        
+        for(NSDictionary *trailProperties in trailsArray)
+        {
+            Trail *t = [[Trail alloc] initWithProperties:trailProperties];
+            if(t.name != nil)
+                [trails addObject:t];
+        }
+        
+        for (int i = 0; i < [trails count]; i++){
+            Trail *t = [trails objectAtIndex:i];
+            XCTAssertNotEqual(t, (Trail *) [NSNull null]);
+        }
     }
 }
 
