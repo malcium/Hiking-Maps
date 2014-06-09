@@ -21,7 +21,7 @@
 {
     [super setUp];
     NSLog(@"%s", __PRETTY_FUNCTION__);
-    self.data = @[@"arch",@"dino",@"zion",@"grand",@"moab",@"ashley",@"dixie",@"fishlake",@"manti",@"uwf"];
+    self.data = @[@"arch",@"bryce",@"dino",@"zion",@"grand",@"moab",@"ashley",@"dixie",@"fishlake",@"manti",@"uwf"];
 }
 
 - (void)tearDown

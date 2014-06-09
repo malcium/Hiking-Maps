@@ -213,33 +213,37 @@
     }
     else if(index == 2)
     {
-        path = @"dino";
+        path = @"bryce";
     }
     else if(index == 3)
     {
-        path = @"dixie";
+        path = @"dino";
     }
     else if(index == 4)
     {
-        path = @"fishlake";
+        path = @"dixie";
     }
     else if(index == 5)
     {
-        path = @"grand";
+        path = @"fishlake";
     }
     else if(index == 6)
     {
-        path = @"manti";
+        path = @"grand";
     }
     else if(index == 7)
     {
-        path = @"moab";
+        path = @"manti";
     }
     else if(index == 8)
     {
-        path = @"uwf";
+        path = @"moab";
     }
     else if(index == 9)
+    {
+        path = @"uwf";
+    }
+    else if(index == 10)
     {
         path = @"zion";
     }
@@ -338,6 +342,9 @@
     }
     else if([forestName isEqualToString:@"ashley"]){
         trailJurisdiction = @"Ashley National Forest";
+    }
+    else if([forestName isEqualToString:@"bryce"]){
+        trailJurisdiction = @"Bryce Canyon National Park";
     }
     else if([forestName isEqualToString:@"dino"]){
         trailJurisdiction = @"Dinosaur National Monument";

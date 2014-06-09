@@ -15,6 +15,7 @@
 		201B31F4193CFF9D0066DE3E /* MPMNearestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 201B31F3193CFF9D0066DE3E /* MPMNearestViewController.m */; };
 		201B31F6193D62440066DE3E /* red-dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 201B31F5193D62440066DE3E /* red-dot.png */; };
 		201B31F8193D65A90066DE3E /* red-dot-2px.png in Resources */ = {isa = PBXBuildFile; fileRef = 201B31F7193D65A90066DE3E /* red-dot-2px.png */; };
+		203DDD6F1945FC98004C3424 /* bryce.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 203DDD6E1945FC98004C3424 /* bryce.geojson */; };
 		2044D80C192EE51A00548DB9 /* MPMTopoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044D809192EE51A00548DB9 /* MPMTopoViewController.m */; };
 		2044D80D192EE51A00548DB9 /* Trail.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044D80B192EE51A00548DB9 /* Trail.m */; };
 		2044D810192EE6C200548DB9 /* MPMTrailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044D80F192EE6C200548DB9 /* MPMTrailViewController.m */; };
@@ -79,6 +80,7 @@
 		201B31F3193CFF9D0066DE3E /* MPMNearestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMNearestViewController.m; sourceTree = "<group>"; };
 		201B31F5193D62440066DE3E /* red-dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-dot.png"; sourceTree = "<group>"; };
 		201B31F7193D65A90066DE3E /* red-dot-2px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-dot-2px.png"; sourceTree = "<group>"; };
+		203DDD6E1945FC98004C3424 /* bryce.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bryce.geojson; sourceTree = "<group>"; };
 		2044D808192EE51A00548DB9 /* MPMTopoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMTopoViewController.h; sourceTree = "<group>"; };
 		2044D809192EE51A00548DB9 /* MPMTopoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMTopoViewController.m; sourceTree = "<group>"; };
 		2044D80A192EE51A00548DB9 /* Trail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trail.h; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		20A254A0192BF3F2002F8D21 /* Map Data */ = {
 			isa = PBXGroup;
 			children = (
+				203DDD6E1945FC98004C3424 /* bryce.geojson */,
 				20D1F537193E91B500E217CF /* arch.geojson */,
 				20D1F538193E91B500E217CF /* dino.geojson */,
 				20D1F539193E91B500E217CF /* zion.geojson */,
@@ -385,6 +388,7 @@
 				20A2549D192BF3D6002F8D21 /* fishlake_trails.geojson in Resources */,
 				20D1F53A193E91B500E217CF /* arch.geojson in Resources */,
 				201B31F6193D62440066DE3E /* red-dot.png in Resources */,
+				203DDD6F1945FC98004C3424 /* bryce.geojson in Resources */,
 				20D1F535193E919900E217CF /* grand.geojson in Resources */,
 				20D1F53C193E91B500E217CF /* zion.geojson in Resources */,
 				201B31F8193D65A90066DE3E /* red-dot-2px.png in Resources */,
