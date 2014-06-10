@@ -56,7 +56,7 @@
     self.view.backgroundColor = [UIColor lightGrayColor];
     self.title = @"Utah Hiking Maps";
     
-    self.forestsArray = @[@"Arches National Park",@"Ashley National Forest",@"Dinosaur National Monument",@"Dixie National Forest",@"Fishlake National Forest",@"Grand Staircase Escalante National Monument",@"Manti-LaSal National Forest",@"Moab BLM",@"Uinta-Wasatch-Cache National Forest", @"Zion National Park"];
+    self.forestsArray = @[@"Arches National Park",@"Ashley National Forest",@"Bryce Canyon National Park",@"Dinosaur National Monument",@"Dixie National Forest",@"Fishlake National Forest",@"Grand Staircase Escalante National Monument",@"Manti-LaSal National Forest",@"Moab BLM",@"Uinta-Wasatch-Cache National Forest", @"Zion National Park"];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.4997605 longitude:-111.547028 zoom:5.5];
@@ -77,6 +77,7 @@
     // calls to drawTrail to populate the map on the home screen
     [self drawTrail:@"arch"];
     [self drawTrail:@"ashley"];
+    [self drawTrail:@"bryce"];
     [self drawTrail:@"dino"];
     [self drawTrail:@"dixie"];
     [self drawTrail:@"fishlake"];
@@ -144,14 +145,17 @@
         self.mapView.mapType = kGMSTypeSatellite;
         self.navigationItem.rightBarButtonItem.title = @"Normal";
     }
-    
     else if (self.mapView.mapType == kGMSTypeSatellite)
     {
         self.mapView.mapType = kGMSTypeNormal;
+        self.navigationItem.rightBarButtonItem.title = @"Hybrid";
+    }
+    else if (self.mapView.mapType == kGMSTypeNormal)
+    {
+        self.mapView.mapType = kGMSTypeHybrid;
         self.navigationItem.rightBarButtonItem.title = @"Terrain";
     }
-    
-    else if (self.mapView.mapType == kGMSTypeNormal)
+    else if (self.mapView.mapType == kGMSTypeHybrid)
     {
         self.mapView.mapType = kGMSTypeTerrain;
         self.navigationItem.rightBarButtonItem.title = @"Satellite";
@@ -311,7 +315,7 @@
             marker.flat = NO;
             marker.title = t.name;
             float miles = [t.length floatValue] * METRIC_CONVERSION;
-            marker.snippet = [NSString stringWithFormat:@"Length: %.2f Miles\nJurisdiction: %@", miles, t.jurisdiction];
+            marker.snippet = [NSString stringWithFormat:@"Jurisdiction: %@\nLength: %.2f Miles", t.jurisdiction, miles];
             
             marker.map = self.mapView;
             
@@ -326,7 +330,7 @@
             GMSPolyline *trailPath = [GMSPolyline polylineWithPath:path];
             
             trailPath.tappable = YES;
-            trailPath.title = [t.name stringByAppendingFormat:@"\n Jurisdiction: %@",t.jurisdiction];
+            trailPath.title = [t.name stringByAppendingFormat:@"|%@",t.jurisdiction];
 
             trailPath.map = self.mapView;
         }
@@ -383,9 +387,16 @@
     float miles = [path lengthOfKind:kGMSLengthRhumb] * METRIC_CONVERSION;
     CLLocationCoordinate2D coord = [path coordinateAtIndex:0];
     GMSMarker *marker = [GMSMarker markerWithPosition:coord];
-    marker.title = name;
-    marker.snippet = [NSString stringWithFormat:@"Length: %.2f Miles", miles];
+   
+    // split the components of the title property of the polyline, so as to list jurisdiction as well
+    // splits the name string up between | characters
+    NSArray *array = [name componentsSeparatedByString:@"|"];
+    marker.title = array[0];
+    
+    marker.snippet = [NSString stringWithFormat:@"Jurisdiction: %@\nLength: %.2f Miles", array[1], miles];
     marker.map = self.mapView;
+    
+    // changes the color of the segment (trail) that the user taps on to yellow and black alternating
     polyline.spans = GMSStyleSpans(polyline.path, self.styles, self.lengths, kGMSLengthRhumb);
 }
 

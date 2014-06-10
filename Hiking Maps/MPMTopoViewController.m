@@ -42,7 +42,7 @@
     GMSMarker *marker = [GMSMarker markerWithPosition:coordi];
     marker.title = self.trail.name;
     float miles = [self.trail.length floatValue] * METRIC_CONVERSION;
-    marker.snippet = [NSString stringWithFormat:@"Length: %.2f Miles\nJurisdiction: %@", miles, self.trail.jurisdiction];
+    marker.snippet = [NSString stringWithFormat:@"Jurisdiction: %@\nLength: %.2f Miles", self.trail.jurisdiction, miles];
     
     marker.map = self.mapView;
     GMSMutablePath *path = [GMSMutablePath path];
@@ -74,6 +74,7 @@
     self.navigationItem.rightBarButtonItem = anotherButton;
 }
 
+// method to handle map type switching on button push in nav bar
 - (void)onClickrighttButton:(id)sender
 {
     if (self.mapView.mapType == kGMSTypeTerrain)
@@ -81,14 +82,17 @@
         self.mapView.mapType = kGMSTypeSatellite;
         self.navigationItem.rightBarButtonItem.title = @"Normal";
     }
-    
     else if (self.mapView.mapType == kGMSTypeSatellite)
     {
         self.mapView.mapType = kGMSTypeNormal;
+        self.navigationItem.rightBarButtonItem.title = @"Hybrid";
+    }
+    else if (self.mapView.mapType == kGMSTypeNormal)
+    {
+        self.mapView.mapType = kGMSTypeHybrid;
         self.navigationItem.rightBarButtonItem.title = @"Terrain";
     }
-    
-    else if (self.mapView.mapType == kGMSTypeNormal)
+    else if (self.mapView.mapType == kGMSTypeHybrid)
     {
         self.mapView.mapType = kGMSTypeTerrain;
         self.navigationItem.rightBarButtonItem.title = @"Satellite";

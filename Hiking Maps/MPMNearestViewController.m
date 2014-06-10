@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) NSArray *lengths;
 
+@property (nonatomic, strong) NSMutableArray *distances;
+
 @end
 
 @implementation MPMNearestViewController{
@@ -42,6 +44,8 @@
     self.styles = @[[GMSStrokeStyle solidColor:[UIColor yellowColor]],[GMSStrokeStyle solidColor:[UIColor blackColor]]];
     
     self.lengths = @[@750, @500];
+    
+    self.distances = [NSMutableArray new];
     
     return self;
 }
@@ -102,14 +106,17 @@
         self.mapView.mapType = kGMSTypeSatellite;
         self.navigationItem.rightBarButtonItem.title = @"Normal";
     }
-    
     else if (self.mapView.mapType == kGMSTypeSatellite)
     {
         self.mapView.mapType = kGMSTypeNormal;
+        self.navigationItem.rightBarButtonItem.title = @"Hybrid";
+    }
+    else if (self.mapView.mapType == kGMSTypeNormal)
+    {
+        self.mapView.mapType = kGMSTypeHybrid;
         self.navigationItem.rightBarButtonItem.title = @"Terrain";
     }
-    
-    else if (self.mapView.mapType == kGMSTypeNormal)
+    else if (self.mapView.mapType == kGMSTypeHybrid)
     {
         self.mapView.mapType = kGMSTypeTerrain;
         self.navigationItem.rightBarButtonItem.title = @"Satellite";
@@ -121,7 +128,6 @@
 - (NSMutableArray *)calculateNearest
 {
     NSMutableArray *trailsCopy = [self.trails mutableCopy]; // a mutable copy of the forest's trail array
-    [trailsCopy removeObjectAtIndex:0];                     // remove the first object which is essentially just a label
     NSMutableArray *locationsArray = [NSMutableArray new];  // instantiate two more arrays used to find the nearest trails
     NSMutableArray *nearestTrails = [NSMutableArray new];
     
@@ -130,7 +136,17 @@
         CLLocation *l = [[CLLocation alloc]initWithLatitude:[t.startLatitude doubleValue] longitude:[t.startLongitude doubleValue]];
         [locationsArray addObject:l];  // and add them to a new array
     }
-    for (int i = 0; i < NUMBER_OF_TRAILS;i++){  // loop to iterate through and select nearest trails
+    int x = [trailsCopy count];
+    int y;
+    
+    // If the particular jurisdiction has less trails in it than NUMBER_OF_TRAILS, then adjust the number of iterations of the following
+    // for loop.
+    if (x > NUMBER_OF_TRAILS)
+        y = 10;
+    else
+        y = x;
+    
+    for (int i = 0; i < y; i++){  // loop to iterate through and select nearest trails
         
         CLLocation *nearestLoc = nil;              // variable to store the nearest location
         CLLocationDistance nearestDis = DBL_MAX;   // variable to store the nearest distance
@@ -147,12 +163,16 @@
                 index = [locationsArray indexOfObject:loc];
             }
         }
+        
         [locationsArray removeObjectAtIndex:index];  // then remove that object from the location array
         
         [nearestTrails addObject:[trailsCopy objectAtIndex:index]];  // and add the trail with the same index to the returned array
         
+        [self.distances addObject:[NSNumber numberWithDouble:nearestDis]];
+        
         [trailsCopy removeObjectAtIndex:index];  // and remove the trail from the array, so the indexes remain the same between the two
     }
+    
     return nearestTrails;
 }
 
@@ -171,7 +191,7 @@
         [self drawTrails];
         self.mapView.camera = [GMSCameraPosition cameraWithTarget:location.coordinate
                                                              zoom:5.5];
-    }    
+    }
 }
 
 // remove observer for location services updates
@@ -186,6 +206,7 @@
     // first grab an array of the nearest trails from the calculateNearest method
     NSArray *nearestTrails = [self calculateNearest];
     
+    int i = 0;
     for (Trail *t in nearestTrails) {
         double lat = [t.startLatitude doubleValue];
         double lon = [t.startLongitude doubleValue];
@@ -198,7 +219,7 @@
         marker.flat = NO;
         marker.title = t.name;
         float miles = [t.length floatValue] * METRIC_CONVERSION;
-        marker.snippet = [NSString stringWithFormat:@"Length: %.2f Miles", miles];
+        marker.snippet = [NSString stringWithFormat:@"Jurisdiction: %@\nLength: %.2f Miles\nDistance from me: %.2f Miles", t.jurisdiction, miles, [self.distances[i] doubleValue] * METRIC_CONVERSION];
         
         marker.map = self.mapView;
         
@@ -211,24 +232,26 @@
         }
         
         GMSPolyline *trailPath = [GMSPolyline polylineWithPath:path];
-        trailPath.title = [t.name stringByAppendingFormat:@"\n Jurisdiction: %@",t.jurisdiction];
+        trailPath.title = [t.name stringByAppendingFormat:@"|%@|%@",t.jurisdiction,self.distances[i]];
         trailPath.tappable = YES;
         trailPath.map = self.mapView;
+        i++;
     }
 }
 
 // method to handle taps on a trail's polyline
 - (void)mapView:(GMSMapView *)mapView didTapOverlay:(GMSPolyline *)overlay
 {
-    NSLog(@"Tapped");
     GMSPolyline *polyline = overlay;
     NSString *name = polyline.title;
     GMSPath *path = polyline.path;
     float miles = [path lengthOfKind:kGMSLengthRhumb] * METRIC_CONVERSION;
     CLLocationCoordinate2D coord = [path coordinateAtIndex:0];
     GMSMarker *marker = [GMSMarker markerWithPosition:coord];
-    marker.title = name;
-    marker.snippet = [NSString stringWithFormat:@"Length: %.2f Miles", miles];
+    NSArray *array = [name componentsSeparatedByString:@"|"];
+    marker.title = array[0];
+    
+    marker.snippet = [NSString stringWithFormat:@"Jurisdiction: %@\nLength: %.2f Miles\nDistance from me: %.2f Miles",array[1], miles,[array[2] doubleValue] * METRIC_CONVERSION];
     marker.map = self.mapView;
     polyline.spans = GMSStyleSpans(polyline.path, self.styles, self.lengths, kGMSLengthRhumb);
 }

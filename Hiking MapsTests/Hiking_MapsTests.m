@@ -50,11 +50,14 @@
             if(t.name != nil)
                 [trails addObject:t];
         }
-        
-        Trail *test = [trails objectAtIndex:0];
-        for (int i = 1; i < [trails count]; i++){
-            Trail *t = [trails objectAtIndex:i];
-            XCTAssertNotEqual(test.name, t.name);
+        for (int j = 0; j < [trails count]; j++) {
+            
+            Trail *test = [trails objectAtIndex:j];
+            for (int i = 0; i < [trails count]; i++){
+                Trail *t = [trails objectAtIndex:i];
+                if (j != i)
+                    XCTAssertNotEqual(test.name, t.name);
+            }
         }
     }
 }
