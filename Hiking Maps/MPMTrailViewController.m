@@ -57,7 +57,8 @@
     
     [self.view addSubview:self.tableView];
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"Header"];
-    
+    self.tableView.sectionIndexBackgroundColor = [UIColor colorWithRed:0.729 green:0.722 blue:0.424 alpha:1.0];
+    self.tableView.sectionIndexColor = [UIColor grayColor];
     self.tableView.dataSource = self;
     
     self.tableView.delegate = self;
@@ -152,6 +153,9 @@
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.contentView.superview.backgroundColor = [UIColor colorWithRed:0.937 green:0.871 blue:0.804 alpha:1.0];
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height)];
+    v.backgroundColor = [UIColor colorWithRed:0.624 green:0.506 blue:0.439 alpha:1.0];
+    cell.selectedBackgroundView = v;
 }
 
 // Action upon selecting row for index path depending upon which tableview is active, the search tableview
@@ -266,7 +270,6 @@
         headerView.contentView.backgroundColor = backgroundColor;
         titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 0.0, self.tableView.bounds.size.width, 15.0)];
         titleLabel.textColor = [UIColor blackColor];
-        //titleLabel.backgroundColor = backgroundColor;
         titleLabel.tintColor = backgroundColor;
         titleLabel.shadowOffset = CGSizeMake(0.0, 0.5);
         titleLabel.tag = 1;

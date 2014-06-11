@@ -166,7 +166,7 @@
 -(void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
-    
+    [self.contactPopover dismissPopoverAnimated:YES];
     mapExpand = YES;
     self.tableView.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height/2);
     self.tableView.contentInset = UIEdgeInsetsMake([self.topLayoutGuide length], 0, 0, 0);
@@ -194,9 +194,14 @@
     return cell;
 }
 
+// layout the color of the cell and what color it will be when it's selected
+// added here because it won't work in cellForRowAtIndexPath
 - (void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.contentView.superview.backgroundColor = [UIColor colorWithRed:0.937 green:0.871 blue:0.804 alpha:1.0];
+    UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, cell.bounds.size.height)];
+    v.backgroundColor = [UIColor colorWithRed:0.624 green:0.506 blue:0.439 alpha:1.0];
+    cell.selectedBackgroundView = v;
 }
 
 // method to handle user selection on the home screen's table view
