@@ -56,20 +56,30 @@
     self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
     
     [self.view addSubview:self.tableView];
+    
+    // register the reuse identifer for producing the headers in the tableview
     [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:@"Header"];
+    
+    // sets the background color and text color for the section index on the right-hand side of the screen
     self.tableView.sectionIndexBackgroundColor = [UIColor colorWithRed:0.729 green:0.722 blue:0.424 alpha:1.0];
     self.tableView.sectionIndexColor = [UIColor grayColor];
-    self.tableView.dataSource = self;
     
+    // set the delegates and datasources to self (this)
+    self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.searchBar.delegate = self;
     self.searchController.delegate = self;
     self.searchController.searchResultsDataSource = self;
     self.searchController.searchResultsDelegate = self;
     
+    // set the searchbar as the table header view
     [self.tableView setTableHeaderView:self.searchBar];
     
+    // sets the main title of the screen
     self.title = self.forest;
+    
+    // uses this method call to populate self.sections array used for organizing the tableview according to section
+    // indexes
     [self setObjects:self.trails];
 }
 
@@ -234,15 +244,6 @@
     // and reload the tableview property
     [self.tableView reloadData];
 }
-
-// method to provide a title for the section headers in the tableview property
-// if the searchDisplayController is active, returns nil to erase the header titles temporarily
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//    if ([self.searchDisplayController isActive])
-//        return nil;
-//    return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
-//}
 
 // returns an array of strings to set the titles of the section headers
 // returns the alphabet based on the localization settings of the device

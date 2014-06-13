@@ -36,15 +36,19 @@
     
     self.title = self.trail.name;
     
+    // grab the starting coordinate from self.trail
     CLLocation * loca = [[CLLocation alloc]initWithLatitude:lat longitude:lon];
     CLLocationCoordinate2D coordi = loca.coordinate;
     
+    // make a marker out of that coordinate, format it's popover window with the trail details
+    // and place the marker on the map
     GMSMarker *marker = [GMSMarker markerWithPosition:coordi];
     marker.title = self.trail.name;
     float miles = [self.trail.length floatValue] * METRIC_CONVERSION;
     marker.snippet = [NSString stringWithFormat:@"Jurisdiction: %@\nLength: %.2f Miles", self.trail.jurisdiction, miles];
-    
     marker.map = self.mapView;
+    
+    // make a polyline out of self.trail's coordinates array, and place it on the map
     GMSMutablePath *path = [GMSMutablePath path];
     for(id array in self.trail.coordinates)
     {
@@ -55,19 +59,24 @@
     
     GMSPolyline *trailPath = [GMSPolyline polylineWithPath:path];
     trailPath.map = self.mapView;
+    
+    // set the mapView's delegate to self (this)
     self.mapView.delegate = self;
 }
 
+// sets the right button on the navigation controller
 - (void)viewWillAppear:(BOOL)animated{
     [self setNavigationBarRightButton];
 }
 
+// Used to layout the map according to view.bounds
 -(void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
     self.mapView.frame = self.view.bounds;  // reset the map frame upon device re-orientation
 }
 
+// Method to set the title and action of the button on the upper right-hand side of the navigation bar
 -(void)setNavigationBarRightButton
 {
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Satellite" style:UIBarButtonItemStyleDone target:self action:@selector(onClickrighttButton:)];
