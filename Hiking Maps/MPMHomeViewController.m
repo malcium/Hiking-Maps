@@ -14,6 +14,8 @@
 
 @interface MPMHomeViewController () <UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate>
 
+// properties used to manipulate the tableview and mapview here on the home
+// screen of the app. Only needs to be accessible here in the implementation
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *forestsArray;
@@ -30,10 +32,12 @@
 
 @implementation MPMHomeViewController
 {
-    UIImage *img;
-    BOOL mapExpand;
+    UIImage *img;        // used for the trail head markers
+    BOOL mapExpand;      // used to determine if the map should expand or contract on a user-event
 }
 
+// custom init to allocate the style and length used to change the color of
+// a trail path when a user taps on it
 - (id)init
 {
     self = [super init];
@@ -52,23 +56,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // sets image to the small red dot for the trail head markers, the background of the view,
+    // and the title of the navigation bar
     img = img = [UIImage imageNamed:@"red-dot-2px.png"];
     self.view.backgroundColor = [UIColor lightGrayColor];
     self.title = @"Utah Hiking Maps";
     
+    // sets the forestsArray, which holds all the jurisdiction names of areas currently included in the app
     self.forestsArray = @[@"Arches National Park",@"Ashley National Forest",@"Bryce Canyon National Park",@"Dinosaur National Monument",@"Dixie National Forest",@"Fishlake National Forest",@"Grand Staircase Escalante National Monument",@"Manti-LaSal National Forest",@"Moab BLM",@"Uinta-Wasatch-Cache National Forest", @"Zion National Park"];
     
+    // allocates the tableview and mapview initialized to the center of Utah
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:39.4997605 longitude:-111.547028 zoom:5.5];
     self.mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     self.mapView.myLocationEnabled = YES;
     self.mapView.settings.myLocationButton = YES;
-    
     self.mapView.mapType = kGMSTypeTerrain;
     
+    // adds the tableview and mapview as a subview of self.view
     [self.view addSubview:self.mapView];
     [self.view addSubview:self.tableView];
     
+    // sets the delegates for the tableview and mapview to self (this)
+    // and sets the background color of tableview to transparent
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -88,15 +99,12 @@
     [self drawTrail:@"zion"];
 }
 
+// used to reset the boolean to determine if the map should expand on user-events
+// and call to a method to set the top right button of the navigation bar
 - (void)viewWillAppear:(BOOL)animated
 {
     [self setNavigationBarRightButton];
     mapExpand = YES;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
 }
 
 // method to set the navigation bar button on home screen or when map is minimized
@@ -163,6 +171,7 @@
 }
 
 // lays out subviews initially, and on device rotation
+// and resets the boolean used to determine if map should expand or contract on user-event
 -(void)viewWillLayoutSubviews
 {
     [super viewWillLayoutSubviews];
@@ -297,7 +306,10 @@
     return sortedArray;
 }
 
-// method to draw trail paths on mapView on the home screen
+// method to draw trail paths on mapView on the home screen, takes the name of the jurisdiction
+// and creates an NSData object out of the file, NSJSONSerialization is then used to create an array
+// of NSDictionaries of the trail json data. Trail objects are then created from these dictionaries,
+// and drawn on self.mapview
 - (void)drawTrail:(NSString *)forestName
 {
     NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:forestName ofType:@"geojson"]];

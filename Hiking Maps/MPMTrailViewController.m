@@ -13,6 +13,8 @@
 
 @interface MPMTrailViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate>
 
+// properties used for tableview manipulation, only needs to be accessible
+// here in the implementation
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) UISearchBar *searchBar;
@@ -27,6 +29,7 @@
 
 @implementation MPMTrailViewController
 
+// custom init used to allocate the forest and trails array used to populate the tableview
 - (id)init
 {
     self = [super init];
