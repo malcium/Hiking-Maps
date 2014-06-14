@@ -10,3 +10,7 @@ Trail data provided by the US Forest Service, National Park Service, and Bureau 
 Duplicate data for the Forests included for now, one set are undissolved data, the other are
 dissolved by name, length, and geometry. Undissolved data causes a unique trail to show up in the app
 as multiple objects.
+
+To run in the iOS simulator, open Hiking Maps.xcodeproj in Xcode and build for an iPhone.
+
+For educational purposes only.
