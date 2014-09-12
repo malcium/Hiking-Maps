@@ -136,7 +136,7 @@
         CLLocation *l = [[CLLocation alloc]initWithLatitude:[t.startLatitude doubleValue] longitude:[t.startLongitude doubleValue]];
         [locationsArray addObject:l];  // and add them to a new array
     }
-    int x = [trailsCopy count];
+    int x = (int)[trailsCopy count];
     int y;
     
     // If the particular jurisdiction has less trails in it than NUMBER_OF_TRAILS, then adjust the number of iterations of the following

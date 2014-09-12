@@ -12,20 +12,24 @@
 	<dict>
 		<key>61D2A9DD-ACEA-4CD6-A8DC-07FD95AD164C</key>
 		<string>https://github.com/malcium/Hiking-Maps.git</string>
+		<key>B6DFF51E29BFD37D56F9D3021CC4E07F121C6EDB</key>
+		<string>https://github.com/malcium/Hiking-Maps.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Hiking Maps.xcodeproj/project.xcworkspace</string>
+	<string>Hiking Maps.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>61D2A9DD-ACEA-4CD6-A8DC-07FD95AD164C</key>
+		<string>../../../Hiking Maps</string>
+		<key>B6DFF51E29BFD37D56F9D3021CC4E07F121C6EDB</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/malcium/Hiking-Maps.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>61D2A9DD-ACEA-4CD6-A8DC-07FD95AD164C</string>
+	<string>B6DFF51E29BFD37D56F9D3021CC4E07F121C6EDB</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>61D2A9DD-ACEA-4CD6-A8DC-07FD95AD164C</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Hiking Maps</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B6DFF51E29BFD37D56F9D3021CC4E07F121C6EDB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Hiking%20Maps</string>
 		</dict>
 	</array>
 </dict>
