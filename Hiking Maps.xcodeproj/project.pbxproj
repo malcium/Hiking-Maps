@@ -53,7 +53,6 @@
 		20D86A59192AEFC200520E7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D86A58192AEFC200520E7D /* main.m */; };
 		20D86A5D192AEFC200520E7D /* MPMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D86A5C192AEFC200520E7D /* MPMAppDelegate.m */; };
 		20D86A5F192AEFC200520E7D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D86A5E192AEFC200520E7D /* Images.xcassets */; };
-		20D86A66192AEFC300520E7D /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D86A65192AEFC300520E7D /* XCTest.framework */; };
 		20D86A67192AEFC300520E7D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D86A4C192AEFC200520E7D /* Foundation.framework */; };
 		20D86A68192AEFC300520E7D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D86A50192AEFC200520E7D /* UIKit.framework */; };
 		20D86A70192AEFC300520E7D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20D86A6E192AEFC300520E7D /* InfoPlist.strings */; };
@@ -128,7 +127,6 @@
 		20D86A5C192AEFC200520E7D /* MPMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPMAppDelegate.m; sourceTree = "<group>"; };
 		20D86A5E192AEFC200520E7D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		20D86A64192AEFC300520E7D /* Hiking MapsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hiking MapsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		20D86A65192AEFC300520E7D /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		20D86A6D192AEFC300520E7D /* Hiking MapsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Hiking MapsTests-Info.plist"; sourceTree = "<group>"; };
 		20D86A6F192AEFC300520E7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		20D86A71192AEFC300520E7D /* Hiking_MapsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Hiking_MapsTests.m; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20D86A66192AEFC300520E7D /* XCTest.framework in Frameworks */,
 				20D86A68192AEFC300520E7D /* UIKit.framework in Frameworks */,
 				20D86A67192AEFC300520E7D /* Foundation.framework in Frameworks */,
 			);
@@ -233,7 +230,6 @@
 				20D86A4C192AEFC200520E7D /* Foundation.framework */,
 				20D86A4E192AEFC200520E7D /* CoreGraphics.framework */,
 				20D86A50192AEFC200520E7D /* UIKit.framework */,
-				20D86A65192AEFC300520E7D /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

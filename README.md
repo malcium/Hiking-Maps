@@ -17,4 +17,4 @@ Make sure to click on Debug->Location->Custom Location and enter a latitude of 4
 -111.588962697577 in the iOS simulator to show full functionality. This is just an arbitrary Utah location that is
 near the Right Hand fork of Logan Canyon. Feel free to enter any other Utah coordinate to demo the software.
 
-For educational purposes only.
+For personal use only.
