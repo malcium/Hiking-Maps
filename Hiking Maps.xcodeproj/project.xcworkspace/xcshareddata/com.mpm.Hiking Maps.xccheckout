@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2E5327FD-C99E-4695-A747-C7EF5C5910BB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>com.mpm.Hiking Maps</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>B6DFF51E29BFD37D56F9D3021CC4E07F121C6EDB</key>
+		<string>https://github.com/malcium/Hiking-Maps.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>com.mpm.Hiking Maps.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>B6DFF51E29BFD37D56F9D3021CC4E07F121C6EDB</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/malcium/Hiking-Maps.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>B6DFF51E29BFD37D56F9D3021CC4E07F121C6EDB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B6DFF51E29BFD37D56F9D3021CC4E07F121C6EDB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Hiking-Maps</string>
+		</dict>
+	</array>
+</dict>
+</plist>

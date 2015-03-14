@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "20D86A48192AEFC200520E7D"
-               BuildableName = "Hiking Maps.app"
+               BuildableName = "com.mpm.Hiking Maps.app"
                BlueprintName = "Hiking Maps"
                ReferencedContainer = "container:Hiking Maps.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "20D86A63192AEFC300520E7D"
-               BuildableName = "Hiking MapsTests.xctest"
+               BuildableName = "com.mpm.Hiking MapsTests.xctest"
                BlueprintName = "Hiking MapsTests"
                ReferencedContainer = "container:Hiking Maps.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "20D86A48192AEFC200520E7D"
-            BuildableName = "Hiking Maps.app"
+            BuildableName = "com.mpm.Hiking Maps.app"
             BlueprintName = "Hiking Maps"
             ReferencedContainer = "container:Hiking Maps.xcodeproj">
          </BuildableReference>
@@ -58,11 +58,12 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "20D86A48192AEFC200520E7D"
-            BuildableName = "Hiking Maps.app"
+            BuildableName = "com.mpm.Hiking Maps.app"
             BlueprintName = "Hiking Maps"
             ReferencedContainer = "container:Hiking Maps.xcodeproj">
          </BuildableReference>
@@ -76,11 +77,12 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "20D86A48192AEFC200520E7D"
-            BuildableName = "Hiking Maps.app"
+            BuildableName = "com.mpm.Hiking Maps.app"
             BlueprintName = "Hiking Maps"
             ReferencedContainer = "container:Hiking Maps.xcodeproj">
          </BuildableReference>

@@ -15,7 +15,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // API key for Google Maps SDK
-    [GMSServices provideAPIKey:@"AIzaSyAA-7GGEGeq1CQ76RbD2PH5wLX1zBop8I0"];
+    [GMSServices provideAPIKey:@"AIzaSyB9dWWo3kdDkuQz2aynUe7mA3djUxzg4tk"];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

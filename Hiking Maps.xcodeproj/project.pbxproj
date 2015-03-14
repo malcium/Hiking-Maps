@@ -19,10 +19,10 @@
 		2044D80C192EE51A00548DB9 /* MPMTopoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044D809192EE51A00548DB9 /* MPMTopoViewController.m */; };
 		2044D80D192EE51A00548DB9 /* Trail.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044D80B192EE51A00548DB9 /* Trail.m */; };
 		2044D810192EE6C200548DB9 /* MPMTrailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2044D80F192EE6C200548DB9 /* MPMTrailViewController.m */; };
+		207529631AB3B1A3006AC5F7 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207529621AB3B1A3006AC5F7 /* GoogleMaps.framework */; };
+		207529671AB3B205006AC5F7 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 207529661AB3B205006AC5F7 /* GoogleMaps.bundle */; };
 		2078BA25193FF64200B3B402 /* UIPopoverController+iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2078BA24193FF64200B3B402 /* UIPopoverController+iPhone.m */; };
 		2078BA271940C88E00B3B402 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2078BA261940C88E00B3B402 /* README.md */; };
-		20A25478192BEAF5002F8D21 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A25477192BEAF5002F8D21 /* GoogleMaps.framework */; };
-		20A2547A192BEB4B002F8D21 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 20A25479192BEB4B002F8D21 /* GoogleMaps.bundle */; };
 		20A2547C192BEBA9002F8D21 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A2547B192BEBA9002F8D21 /* AVFoundation.framework */; };
 		20A2547E192BEBB7002F8D21 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A2547D192BEBB7002F8D21 /* CoreData.framework */; };
 		20A25480192BEBC6002F8D21 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A2547F192BEBC6002F8D21 /* CoreLocation.framework */; };
@@ -87,11 +87,11 @@
 		2044D80B192EE51A00548DB9 /* Trail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trail.m; sourceTree = "<group>"; };
 		2044D80E192EE6C200548DB9 /* MPMTrailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPMTrailViewController.h; sourceTree = "<group>"; };
 		2044D80F192EE6C200548DB9 /* MPMTrailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPMTrailViewController.m; sourceTree = "<group>"; };
+		207529621AB3B1A3006AC5F7 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		207529661AB3B205006AC5F7 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "../GoogleMaps-iOS-1.9.2/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
 		2078BA23193FF64200B3B402 /* UIPopoverController+iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIPopoverController+iPhone.h"; sourceTree = "<group>"; };
 		2078BA24193FF64200B3B402 /* UIPopoverController+iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIPopoverController+iPhone.m"; sourceTree = "<group>"; };
 		2078BA261940C88E00B3B402 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
-		20A25477192BEAF5002F8D21 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
-		20A25479192BEB4B002F8D21 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		20A2547B192BEBA9002F8D21 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		20A2547D192BEBB7002F8D21 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		20A2547F192BEBC6002F8D21 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -153,7 +153,7 @@
 				20A2547C192BEBA9002F8D21 /* AVFoundation.framework in Frameworks */,
 				20D86A4F192AEFC200520E7D /* CoreGraphics.framework in Frameworks */,
 				20D86A51192AEFC200520E7D /* UIKit.framework in Frameworks */,
-				20A25478192BEAF5002F8D21 /* GoogleMaps.framework in Frameworks */,
+				207529631AB3B1A3006AC5F7 /* GoogleMaps.framework in Frameworks */,
 				20D86A4D192AEFC200520E7D /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +216,8 @@
 		20D86A4B192AEFC200520E7D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				207529661AB3B205006AC5F7 /* GoogleMaps.bundle */,
+				207529621AB3B1A3006AC5F7 /* GoogleMaps.framework */,
 				20A25491192BEC4E002F8D21 /* SystemConfiguration.framework */,
 				20A2548F192BEC41002F8D21 /* QuartzCore.framework */,
 				20A2548D192BEC33002F8D21 /* OpenGLES.framework */,
@@ -228,8 +230,6 @@
 				20A2547F192BEBC6002F8D21 /* CoreLocation.framework */,
 				20A2547D192BEBB7002F8D21 /* CoreData.framework */,
 				20A2547B192BEBA9002F8D21 /* AVFoundation.framework */,
-				20A25479192BEB4B002F8D21 /* GoogleMaps.bundle */,
-				20A25477192BEAF5002F8D21 /* GoogleMaps.framework */,
 				20D86A4C192AEFC200520E7D /* Foundation.framework */,
 				20D86A4E192AEFC200520E7D /* CoreGraphics.framework */,
 				20D86A50192AEFC200520E7D /* UIKit.framework */,
@@ -340,10 +340,10 @@
 			attributes = {
 				CLASSPREFIX = MPM;
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Westminster College";
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					20D86A48192AEFC200520E7D = {
-						DevelopmentTeam = RQK45HF983;
+						DevelopmentTeam = A9BMD4V3L6;
 					};
 					20D86A63192AEFC300520E7D = {
 						TestTargetID = 20D86A48192AEFC200520E7D;
@@ -374,7 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20A2549B192BF3D6002F8D21 /* ashley_trails.geojson in Resources */,
-				20A2547A192BEB4B002F8D21 /* GoogleMaps.bundle in Resources */,
+				207529671AB3B205006AC5F7 /* GoogleMaps.bundle in Resources */,
 				20D86A57192AEFC200520E7D /* InfoPlist.strings in Resources */,
 				2078BA271940C88E00B3B402 /* README.md in Resources */,
 				20D86A5F192AEFC200520E7D /* Images.xcassets in Resources */,
@@ -548,8 +548,9 @@
 				GCC_PREFIX_HEADER = "Hiking Maps/Hiking Maps-Prefix.pch";
 				INFOPLIST_FILE = "Hiking Maps/Hiking Maps-Info.plist";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Hiking Maps";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -569,8 +570,9 @@
 				GCC_PREFIX_HEADER = "Hiking Maps/Hiking Maps-Prefix.pch";
 				INFOPLIST_FILE = "Hiking Maps/Hiking Maps-Info.plist";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Hiking Maps";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -591,7 +593,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Hiking MapsTests/Hiking MapsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Hiking MapsTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -609,7 +611,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hiking Maps/Hiking Maps-Prefix.pch";
 				INFOPLIST_FILE = "Hiking MapsTests/Hiking MapsTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Hiking MapsTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
