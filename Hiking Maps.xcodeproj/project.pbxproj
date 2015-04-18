@@ -543,6 +543,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hiking Maps/Hiking Maps-Prefix.pch";
 				INFOPLIST_FILE = "Hiking Maps/Hiking Maps-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "Hiking Maps";
 				PROVISIONING_PROFILE = "";
@@ -565,6 +566,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hiking Maps/Hiking Maps-Prefix.pch";
 				INFOPLIST_FILE = "Hiking Maps/Hiking Maps-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "Hiking Maps";
 				PROVISIONING_PROFILE = "";

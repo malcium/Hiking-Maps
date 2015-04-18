@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "20D86A48192AEFC200520E7D"
-               BuildableName = "com.mpm.Hiking Maps.app"
+               BuildableName = "Hiking Maps.app"
                BlueprintName = "Hiking Maps"
                ReferencedContainer = "container:Hiking Maps.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "20D86A63192AEFC300520E7D"
-               BuildableName = "com.mpm.Hiking MapsTests.xctest"
+               BuildableName = "Hiking MapsTests.xctest"
                BlueprintName = "Hiking MapsTests"
                ReferencedContainer = "container:Hiking Maps.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "20D86A48192AEFC200520E7D"
-            BuildableName = "com.mpm.Hiking Maps.app"
+            BuildableName = "Hiking Maps.app"
             BlueprintName = "Hiking Maps"
             ReferencedContainer = "container:Hiking Maps.xcodeproj">
          </BuildableReference>
@@ -63,7 +63,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "20D86A48192AEFC200520E7D"
-            BuildableName = "com.mpm.Hiking Maps.app"
+            BuildableName = "Hiking Maps.app"
             BlueprintName = "Hiking Maps"
             ReferencedContainer = "container:Hiking Maps.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "20D86A48192AEFC200520E7D"
-            BuildableName = "com.mpm.Hiking Maps.app"
+            BuildableName = "Hiking Maps.app"
             BlueprintName = "Hiking Maps"
             ReferencedContainer = "container:Hiking Maps.xcodeproj">
          </BuildableReference>

@@ -123,7 +123,7 @@
     }
 }
 
-// method to calculate the nearest trails to the user's location, repquires that myLocation is enabled and first KVO
+// method to calculate the nearest trails to the user's location, requires that myLocation is enabled and first KVO
 // update has occured
 - (NSMutableArray *)calculateNearest
 {
