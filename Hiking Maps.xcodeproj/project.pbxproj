@@ -335,7 +335,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MPM;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					20D86A48192AEFC200520E7D = {
@@ -476,6 +476,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -545,6 +546,7 @@
 				INFOPLIST_FILE = "Hiking Maps/Hiking Maps-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mpm.Hiking-Maps";
 				PRODUCT_NAME = "Hiking Maps";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -568,6 +570,7 @@
 				INFOPLIST_FILE = "Hiking Maps/Hiking Maps-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mpm.Hiking-Maps";
 				PRODUCT_NAME = "Hiking Maps";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -591,6 +594,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "Hiking MapsTests/Hiking MapsTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mpm.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Hiking MapsTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -609,6 +613,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Hiking Maps/Hiking Maps-Prefix.pch";
 				INFOPLIST_FILE = "Hiking MapsTests/Hiking MapsTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mpm.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "Hiking MapsTests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
