@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'ruby --version'
+                sh 'xcodebuild -project "Hiking Maps.xcodeproj" -target "Hiking Maps" -configuration "Debug"'
             }
         }
     }
